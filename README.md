@@ -25,6 +25,7 @@ User → Builder → Engineer → Architect → Founder.
 Everyone begins with a shared foundation.
 
 ![Engineering Tree](tree_v0/diagrams/engineering_tree_styled.png)
+![Engineering Tree](tree_v0/diagrams/engineering_tree_v0.png)
 
 Then members branch into:
 
@@ -56,6 +57,10 @@ Explorer → Apprentice → Builder → Engineer → Architect → Founder.
 Skills become income through:
 
 Freelancing → Consulting → Products → Startups.
+
+## Combined sytem diagram
+
+![Monetization Ladder](tree_v0/diagrams/combined_system_diagram.png)
 
 ---
 
