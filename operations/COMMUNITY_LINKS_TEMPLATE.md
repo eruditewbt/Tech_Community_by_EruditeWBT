@@ -1,10 +1,10 @@
 # Community Links (Fill These In)
 *Powered by EruditeWBT*
 
-- YouTube:
-- Discord invite:
-- GitHub org / repo:
+- YouTube: https://www.youtube.com/@eruditewbt
+- Discord invite: https://discord.gg/8e4bQNknA
+- GitHub org / repo: https://github.com/eruditewbt/Tech_Community_by_EruditeWBT
+- Engineering Tree repo: https://github.com/eruditewbt/engineering-tree-community_repo
 - Knowledge hub (Notion/GitBook):
 - X / Twitter:
-- LinkedIn:
-
+- LinkedIn: https://www.linkedin.com/in/chemiosis-daniel-34542826a

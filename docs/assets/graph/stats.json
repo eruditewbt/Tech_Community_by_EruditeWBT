@@ -1,0 +1,11 @@
+{
+  "nodes": 2862,
+  "edges": 14177,
+  "collapsed_edges": 14163,
+  "outputs": {
+    "nodes_jsonl": "knowledge_graph\\global_v2_web\\nodes.jsonl",
+    "edges_jsonl": "knowledge_graph\\global_v2_web\\edges.jsonl",
+    "graphml": "knowledge_graph\\global_v2_web\\graph.graphml",
+    "node_link_json": "knowledge_graph\\global_v2_web\\graph.json"
+  }
+}

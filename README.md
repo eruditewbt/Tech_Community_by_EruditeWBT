@@ -79,9 +79,20 @@ Freelancing → Consulting → Products → Startups.
 
 ## Community
 
-- Discord: (add link)
+- Discord: https://discord.gg/8e4bQNknA
+- Website (GitHub Pages): https://eruditewbt.github.io/Tech_Community_by_EruditeWBT/
 - Knowledge Hub: (Notion/GitBook)
-- YouTube: (channel link)
+- YouTube: https://www.youtube.com/@eruditewbt
+- LinkedIn (Founder): https://www.linkedin.com/in/chemiosis-daniel-34542826a
+
+---
+
+## Civilization Graph (Occupations)
+
+This repo ships a **civilization-scale occupation graph** (O*NET-powered) plus a web viewer.
+
+- Web viewer: `docs/graph.html`
+- Exports: `civilization_graph/exports/global_v2_web/`
 
 ---
 

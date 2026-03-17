@@ -1,0 +1,110 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Civilization Graph | EruditeWBT</title>
+    <meta
+      name="description"
+      content="Interactive civilization graph of occupations, industries, technologies, and computing pillars."
+    />
+
+    <link rel="icon" href="assets/eruditewbt_logo.jpg" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;600;700&family=IBM+Plex+Serif:wght@400;600&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+
+  <body>
+    <a class="skip" href="#main">Skip to content</a>
+
+    <header class="top">
+      <div class="top__inner">
+        <div class="brand">
+          <img class="brand__logo" src="assets/eruditewbt_logo.jpg" alt="EruditeWBT logo" />
+          <div class="brand__text">
+            <div class="brand__name">Civilization Graph</div>
+            <div class="brand__sub">Occupations × Industries × Tech × Computing Pillars</div>
+          </div>
+        </div>
+
+        <nav class="nav" aria-label="Primary">
+          <a class="nav__link" href="./">Home</a>
+          <a class="nav__link" href="https://discord.gg/8e4bQNknA" target="_blank" rel="noreferrer">Discord</a>
+          <a class="nav__link" href="https://www.youtube.com/@eruditewbt" target="_blank" rel="noreferrer">YouTube</a>
+        </nav>
+      </div>
+    </header>
+
+    <main id="main" class="graphwrap">
+      <div class="graphhead">
+        <h1 class="graphhead__title">Interactive Graph (Web Build)</h1>
+        <div class="controls">
+          <div class="control">
+            <label for="mode">Mode</label>
+            <select id="mode">
+              <option value="ego" selected>Ego Network</option>
+              <option value="pillars">Pillars Only</option>
+            </select>
+          </div>
+          <div class="control">
+            <label for="q">Search</label>
+            <input id="q" placeholder="e.g. data scientist, jira, cloud, nurse" autocomplete="off" />
+          </div>
+          <div class="control">
+            <label for="type">Type</label>
+            <select id="type">
+              <option value="all" selected>All</option>
+              <option value="occupation">Occupation</option>
+              <option value="industry_division">Industry</option>
+              <option value="technology">Technology</option>
+              <option value="tool">Tool</option>
+              <option value="computing_pillar">Computing Pillar</option>
+            </select>
+          </div>
+          <button class="btn btn--quiet" id="reset" type="button">Reset</button>
+        </div>
+      </div>
+
+      <div class="stage">
+        <div class="stage__bar">
+          <div class="stage__hint">
+            Tip: search a node, click it to pin its ego-network. Drag nodes. Scroll to zoom.
+          </div>
+          <div class="stage__hint" id="counts">Loading…</div>
+        </div>
+        <canvas id="graph" aria-label="Civilization graph visualization"></canvas>
+        <div class="legend">
+          <span class="chip"><span class="sw" style="background: #27d0a0"></span>Occupation</span>
+          <span class="chip"><span class="sw" style="background: #f1c66a"></span>Industry</span>
+          <span class="chip"><span class="sw" style="background: #ff6a3d"></span>Technology</span>
+          <span class="chip"><span class="sw" style="background: #8aa0ff"></span>Tool</span>
+          <span class="chip"><span class="sw" style="background: #ffffff"></span>Pillar</span>
+        </div>
+      </div>
+
+      <div class="side">
+        <div class="box">
+          <div class="box__t">Selected Node</div>
+          <div class="kv" id="selected">Click a node to inspect it.</div>
+        </div>
+        <div class="box">
+          <div class="box__t">Data</div>
+          <div class="kv">
+            This web graph is a curated export built from O*NET tables (occupations, tools/tech, related occupations,
+            industry divisions) plus a computing pillar layer.
+            <br /><br />
+            Repo exports: <b>civilization_graph/exports/global_v2_web/</b>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <script src="graph.js"></script>
+  </body>
+</html>
+

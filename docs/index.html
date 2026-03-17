@@ -1,0 +1,240 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta
+      name="description"
+      content="EruditeWBT Tech Community — a builder ecosystem + civilization graph of occupations, skills, and the computing pillars that digitize the world."
+    />
+    <title>EruditeWBT Tech Community | Civilization Graph</title>
+
+    <link rel="icon" href="assets/eruditewbt_logo.jpg" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;600;700&family=IBM+Plex+Serif:wght@400;600&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+
+  <body>
+    <a class="skip" href="#main">Skip to content</a>
+
+    <header class="top">
+      <div class="top__inner">
+        <div class="brand">
+          <img class="brand__logo" src="assets/eruditewbt_logo.jpg" alt="EruditeWBT logo" />
+          <div class="brand__text">
+            <div class="brand__name">EruditeWBT Tech Community</div>
+            <div class="brand__sub">Civilization Graph + Builder Ecosystem</div>
+          </div>
+        </div>
+
+        <nav class="nav" aria-label="Primary">
+          <a class="nav__link" href="./graph.html">Civilization Graph</a>
+          <a class="nav__link" href="#start">Start</a>
+          <a class="nav__link" href="#links">Links</a>
+        </nav>
+      </div>
+    </header>
+
+    <main id="main" class="main">
+      <section class="hero hero--alt">
+        <div class="hero__bg" aria-hidden="true"></div>
+        <div class="hero__grid">
+          <div class="hero__copy">
+            <p class="eyebrow">Powered by EruditeWBT</p>
+            <h1 class="hero__title">A community that maps civilization by occupation — and teaches you to build.</h1>
+            <p class="hero__lede">
+              We’re building a technical guild where learning is structured (tree), proof-driven (projects), and grounded
+              in reality: a global graph of occupations, tools, technologies, and the computing pillars that digitize the
+              world.
+            </p>
+
+            <div class="cta">
+              <a class="btn btn--primary" href="https://discord.gg/8e4bQNknA" target="_blank" rel="noreferrer">
+                Join Discord
+              </a>
+              <a class="btn btn--ghost" href="https://www.youtube.com/@eruditewbt" target="_blank" rel="noreferrer">
+                YouTube @eruditewbt
+              </a>
+              <a class="btn btn--quiet" href="./graph.html">Open Civilization Graph</a>
+            </div>
+
+            <div class="stats" id="stats">
+              <div class="stat">
+                <div class="stat__n" id="statNodes">—</div>
+                <div class="stat__k">nodes</div>
+              </div>
+              <div class="stat">
+                <div class="stat__n" id="statEdges">—</div>
+                <div class="stat__k">edges</div>
+              </div>
+              <div class="stat">
+                <div class="stat__n">O*NET</div>
+                <div class="stat__k">ground truth</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="hero__panel">
+            <div class="panel">
+              <div class="panel__head">
+                <div class="panel__title">Engineering Tree (v0)</div>
+                <div class="panel__hint">Click to zoom</div>
+              </div>
+              <button class="panel__img" type="button" data-modal-img="assets/diagrams/engineering_tree_styled.png">
+                <img src="assets/diagrams/engineering_tree_styled.png" alt="Engineering tree diagram" loading="lazy" />
+              </button>
+              <div class="panel__foot">
+                <a class="inline" href="./graph.html">Civilization Graph</a>
+                <span class="dot" aria-hidden="true"></span>
+                <a
+                  class="inline"
+                  href="https://github.com/eruditewbt/engineering-tree-community_repo"
+                  target="_blank"
+                  rel="noreferrer"
+                >
+                  Engineering Tree Repo
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section" id="start">
+        <div class="section__head">
+          <h2 class="section__title">Start Here</h2>
+          <p class="section__sub">
+            Do this once, then build weekly. The graph gives the map; the tree gives the path.
+          </p>
+        </div>
+
+        <div class="steps">
+          <a class="step" href="./graph.html">
+            <div class="step__n">01</div>
+            <div class="step__b">
+              <div class="step__t">Explore the Civilization Graph</div>
+              <div class="step__d">See how occupations connect to tools, tech, industries, and computing pillars.</div>
+            </div>
+          </a>
+
+          <a
+            class="step"
+            href="https://github.com/eruditewbt/Tech_Community_by_EruditeWBT/blob/main/manifesto/BUILDER_MANIFESTO.md"
+            target="_blank"
+            rel="noreferrer"
+          >
+            <div class="step__n">02</div>
+            <div class="step__b">
+              <div class="step__t">Read the Builder Manifesto</div>
+              <div class="step__d">The culture: build, document, teach forward, create economic opportunity.</div>
+            </div>
+          </a>
+
+          <a
+            class="step"
+            href="https://github.com/eruditewbt/engineering-tree-community_repo"
+            target="_blank"
+            rel="noreferrer"
+          >
+            <div class="step__n">03</div>
+            <div class="step__b">
+              <div class="step__t">Pick a Branch (Engineering Tree)</div>
+              <div class="step__d">Use the tree to choose a path, then ship projects as proof.</div>
+            </div>
+          </a>
+
+          <a class="step" href="https://discord.gg/8e4bQNknA" target="_blank" rel="noreferrer">
+            <div class="step__n">04</div>
+            <div class="step__b">
+              <div class="step__t">Post Your 90-Day Build Goal</div>
+              <div class="step__d">We don’t do passive learning. We build.</div>
+            </div>
+          </a>
+        </div>
+      </section>
+
+      <section class="section" id="links">
+        <div class="section__head">
+          <h2 class="section__title">Links</h2>
+          <p class="section__sub">Join, watch, and follow the build.</p>
+        </div>
+
+        <div class="links">
+          <a class="linkcard" href="https://discord.gg/8e4bQNknA" target="_blank" rel="noreferrer">
+            <div class="linkcard__k">Discord</div>
+            <div class="linkcard__t">Community Server</div>
+            <div class="linkcard__d">Weekly sprints, project help, build-in-public.</div>
+          </a>
+
+          <a class="linkcard" href="https://www.youtube.com/@eruditewbt" target="_blank" rel="noreferrer">
+            <div class="linkcard__k">YouTube</div>
+            <div class="linkcard__t">@eruditewbt</div>
+            <div class="linkcard__d">Community + engineering videos.</div>
+          </a>
+
+          <a class="linkcard" href="https://github.com/eruditewbt/Tech_Community_by_EruditeWBT" target="_blank" rel="noreferrer">
+            <div class="linkcard__k">GitHub</div>
+            <div class="linkcard__t">Tech Community Repo</div>
+            <div class="linkcard__d">Docs, governance, launch operations, civilization graph exports.</div>
+          </a>
+
+          <a class="linkcard" href="https://www.linkedin.com/in/chemiosis-daniel-34542826a" target="_blank" rel="noreferrer">
+            <div class="linkcard__k">LinkedIn</div>
+            <div class="linkcard__t">Daniel (Chemiosis)</div>
+            <div class="linkcard__d">Founder updates + milestones.</div>
+          </a>
+        </div>
+      </section>
+
+      <footer class="foot">
+        <div class="foot__inner">
+          <div class="foot__left">
+            <div class="foot__brand">
+              <img class="foot__logo" src="assets/eruditewbt_logo.jpg" alt="" />
+              <div>
+                <div class="foot__title">EruditeWBT Tech Community</div>
+                <div class="foot__sub">Civilization Graph + Builder Ecosystem</div>
+              </div>
+            </div>
+            <div class="foot__fine">Builders build. Knowledge compounds. Civilization is a graph.</div>
+          </div>
+          <div class="foot__right">
+            <a class="foot__link" href="./graph.html">Civilization Graph</a>
+            <a class="foot__link" href="#start">Start Here</a>
+            <a class="foot__link" href="#links">Links</a>
+          </div>
+        </div>
+      </footer>
+    </main>
+
+    <dialog class="modal" id="modal">
+      <form method="dialog" class="modal__frame">
+        <button class="modal__close" aria-label="Close">Close</button>
+        <img id="modalImg" class="modal__img" alt="" />
+      </form>
+    </dialog>
+
+    <div class="toast" id="toast" role="status" aria-live="polite" aria-atomic="true"></div>
+
+    <script src="app.js"></script>
+    <script>
+      (async function () {
+        try {
+          const res = await fetch("assets/graph/stats.json", { cache: "no-store" });
+          if (!res.ok) return;
+          const s = await res.json();
+          const n = document.getElementById("statNodes");
+          const e = document.getElementById("statEdges");
+          if (n) n.textContent = String(s.nodes ?? "—");
+          if (e) e.textContent = String(s.edges ?? "—");
+        } catch (_) {}
+      })();
+    </script>
+  </body>
+</html>
+
