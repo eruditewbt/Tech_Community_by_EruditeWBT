@@ -118,6 +118,12 @@
     </main>
 
     <script src="pathgen.js"></script>
+    <script>
+      // Load the O*NET importance layer in the background (keeps the main graph fast).
+      if (window.PathGen && typeof window.PathGen.loadOnetIndex === "function") {
+        window.PathGen.loadOnetIndex("assets/graph/paths_index.json");
+      }
+    </script>
     <script src="graph.js"></script>
   </body>
 </html>

@@ -33,6 +33,7 @@
   let edgesByNode = new Map(); // id -> [{other, relation, weight, dir}]
   let pinnedId = null;
   let lastPlanMd = "";
+  let lastPathObj = null;
 
   // view transform (world -> screen)
   let scale = 1;
@@ -113,7 +114,8 @@
         history.replaceState(null, "", location.pathname + location.search);
         return;
       }
-      const h = `#node=${encodeURIComponent(id)}`;
+      // Support both legacy (#node=) and plan sharing (#path=)
+      const h = `#path=${encodeURIComponent(id)}&node=${encodeURIComponent(id)}`;
       history.replaceState(null, "", h);
     } catch (_) {}
   }
@@ -124,6 +126,7 @@
     const parts = h.split("&");
     for (const p of parts) {
       const [k, v] = p.split("=");
+      if (k === "path" && v) return decodeURIComponent(v);
       if (k === "node" && v) return decodeURIComponent(v);
     }
     return null;
@@ -369,6 +372,7 @@
           return;
         }
         lastPlanMd = pg.toMarkdown(path);
+        lastPathObj = path;
         pathEl.innerHTML = renderPathHtml(path);
       }
     }
@@ -448,14 +452,37 @@
       return `<div class="pathH">Week ${w.week}: ${escape(w.title)}</div><ul class="list">${b}</ul>`;
     });
 
+    const onetBlock = (title, items, max = 8) => {
+      const xs = (items || []).slice(0, max);
+      if (!xs.length) return "";
+      const rows = xs
+        .map((it) => `<li>${escape(it.name)} <span style="opacity:.7">(${Number(it.importance).toFixed(2)})</span></li>`)
+        .join("");
+      return `<div class="pathH">${escape(title)}</div><ul class="list">${rows}</ul>`;
+    };
+
+    const confidence = path.confidence || { label: "—", score: 0, note: "" };
+
     return `
       <div><b>${escape(path.role)}</b>${path.code ? ` <span style="opacity:.75">(${escape(path.code)})</span>` : ""}</div>
       <div style="opacity:.8; margin-top:6px"><b>Formula:</b> Field → Role → Skills → Tools → Projects → Income</div>
 
       <div class="pathActions">
         <button class="miniBtn" type="button" data-copy-plan="1">Copy Plan</button>
+        <button class="miniBtn" type="button" data-download-plan="md">Download .md</button>
+        <button class="miniBtn" type="button" data-download-plan="json">Download .json</button>
         <a class="miniBtn" href="https://github.com/eruditewbt/Tech_Community_by_EruditeWBT/tree/main/projects/tracks" target="_blank" rel="noreferrer">Open Tracks</a>
+        <a class="miniBtn" href="https://github.com/eruditewbt/Tech_Community_by_EruditeWBT/blob/main/community_guides/HOW_TO_USE_THE_GRAPH.md" target="_blank" rel="noreferrer">Guide</a>
         <a class="miniBtn" href="./START.html">Start</a>
+      </div>
+
+      <div class="pathH">Trust</div>
+      <div>
+        <b>Confidence:</b> ${escape(confidence.label)} <span style="opacity:.7">(${(Number(confidence.score) * 100).toFixed(0)}%)</span><br/>
+        <b>Difficulty:</b> ${escape(path.difficulty || "—")}<br/>
+        <b>Time to first result:</b> ${escape(path.time_to_first_result || "—")}<br/>
+        <b>Best first step:</b> ${escape(path.best_first_step || "—")}<br/>
+        <span style="opacity:.75">${escape(confidence.note || "")}</span>
       </div>
 
       <div class="pathH">Related fields</div>
@@ -472,6 +499,10 @@
 
       <div class="pathH">Tools</div>
       ${bullets(path.tools, 8)}
+
+      ${onetBlock("O*NET Skills (importance)", path.onet_skills, 8)}
+      ${onetBlock("O*NET Knowledge (importance)", path.onet_knowledge, 8)}
+      ${onetBlock("O*NET Abilities (importance)", path.onet_abilities, 6)}
 
       <div class="pathH">Skills (suggested)</div>
       ${bullets(path.skills, 10)}
@@ -556,6 +587,34 @@
       }, 1200);
     } catch (_) {
       if (countsEl) countsEl.textContent = "Copy failed.";
+    }
+  });
+
+  document.addEventListener("click", async (e) => {
+    const t = e.target instanceof Element ? e.target : null;
+    if (!t) return;
+    const btn = t.closest("[data-download-plan]");
+    if (!btn) return;
+    const kind = btn.getAttribute("data-download-plan");
+    if (!pinnedId) return;
+    const safe = String(pinnedId).replaceAll(":", "_");
+    if (kind === "md" && lastPlanMd) {
+      const blob = new Blob([lastPlanMd], { type: "text/markdown" });
+      const a = document.createElement("a");
+      a.href = URL.createObjectURL(blob);
+      a.download = `career_path_${safe}.md`;
+      a.click();
+      URL.revokeObjectURL(a.href);
+      return;
+    }
+    if (kind === "json" && lastPathObj) {
+      const blob = new Blob([JSON.stringify(lastPathObj, null, 2)], { type: "application/json" });
+      const a = document.createElement("a");
+      a.href = URL.createObjectURL(blob);
+      a.download = `career_path_${safe}.json`;
+      a.click();
+      URL.revokeObjectURL(a.href);
+      return;
     }
   });
 
