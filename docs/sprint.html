@@ -1,0 +1,84 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Sprint Proof Page | Civilization Graph Community</title>
+    <meta name="description" content="Shareable sprint proof page: role, plan, checklist, and progress." />
+
+    <link rel="icon" href="assets/eruditewbt_logo.jpg" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;600;700&family=IBM+Plex+Serif:wght@400;600&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+
+  <body>
+    <a class="skip" href="#main">Skip to content</a>
+
+    <header class="top">
+      <div class="top__inner">
+        <div class="brand">
+          <img class="brand__logo" src="assets/eruditewbt_logo.jpg" alt="EruditeWBT logo" />
+          <div class="brand__text">
+            <div class="brand__name">Sprint Proof Page</div>
+            <div class="brand__sub">A portable artifact (no backend)</div>
+          </div>
+        </div>
+
+        <nav class="nav" aria-label="Primary">
+          <a class="nav__link" href="./">Home</a>
+          <a class="nav__link" href="./graph.html">Graph</a>
+          <a class="nav__link" href="./START.html">Start</a>
+        </nav>
+      </div>
+    </header>
+
+    <main id="main" class="section">
+      <div class="section__head">
+        <h1 class="section__title" id="title">Loading sprint…</h1>
+        <p class="section__sub" id="sub"></p>
+      </div>
+
+      <div class="split" style="margin-top: 12px">
+        <div class="split__col">
+          <h2 class="h3">Sprint Summary</h2>
+          <div class="kv" id="summary">Loading…</div>
+          <div class="pathActions">
+            <button class="miniBtn" type="button" id="copyLink">Copy Page Link</button>
+            <button class="miniBtn" type="button" id="copyDiscord">Copy Discord Update</button>
+            <button class="miniBtn" type="button" id="downloadMd">Download .md</button>
+            <a class="miniBtn" href="./graph.html" id="openGraph">Open in Graph</a>
+          </div>
+        </div>
+        <div class="split__col">
+          <h2 class="h3">Checklist (7 days)</h2>
+          <div class="kv" id="checklist">Loading…</div>
+        </div>
+      </div>
+
+      <div class="split" style="margin-top: 12px">
+        <div class="split__col">
+          <h2 class="h3">Path (Generated)</h2>
+          <div class="kv" id="path">Loading…</div>
+        </div>
+        <div class="split__col">
+          <h2 class="h3">30‑Day Progression</h2>
+          <div class="kv" id="roadmap">Loading…</div>
+        </div>
+      </div>
+
+      <p class="small" style="margin-top: 16px">
+        Built via the <b>Civilization Graph Community</b> (EruditeWBT). This page is a static, shareable proof artifact.
+      </p>
+    </main>
+
+    <script src="sprint_codec.js"></script>
+    <script src="pathgen.js"></script>
+    <script src="sprint.js"></script>
+  </body>
+</html>
+

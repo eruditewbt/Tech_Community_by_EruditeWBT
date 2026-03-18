@@ -103,6 +103,15 @@
   let ONET_INDEX = null;
   let ONET_INDEX_LOADING = false;
 
+  /**
+   * Allows callers (e.g., sprint proof page) to inject the O*NET index immediately,
+   * avoiding an async race where the first generated path misses the enrichment layer.
+   * @param {Record<string, any>|null} index
+   */
+  function setOnetIndex(index) {
+    if (index && typeof index === "object") ONET_INDEX = index;
+  }
+
   function loadOnetIndex(url) {
     if (ONET_INDEX || ONET_INDEX_LOADING) return;
     ONET_INDEX_LOADING = true;
@@ -676,6 +685,7 @@
   }
 
   window.PathGen = {
+    setOnetIndex,
     loadOnetIndex,
     generateCareerPath,
     toMarkdown,

@@ -476,6 +476,8 @@
         <button class="miniBtn" type="button" data-download-plan="md">Download .md</button>
         <button class="miniBtn" type="button" data-download-plan="json">Download .json</button>
         <button class="miniBtn" type="button" data-start-sprint="7">Start 7‑Day Sprint</button>
+        <button class="miniBtn" type="button" data-open-sprint="1">Open Sprint Page</button>
+        <button class="miniBtn" type="button" data-copy-sprint="1">Copy Sprint Link</button>
         <button class="miniBtn" type="button" data-toggle-roadmap="30">30‑Day Mode</button>
         <button class="miniBtn" type="button" data-copy-discord="1">Copy Discord Update</button>
         <a class="miniBtn" href="https://github.com/eruditewbt/Tech_Community_by_EruditeWBT/tree/main/projects/tracks" target="_blank" rel="noreferrer">Open Tracks</a>
@@ -713,6 +715,45 @@
   document.addEventListener("click", async (e) => {
     const t = e.target instanceof Element ? e.target : null;
     if (!t) return;
+
+    const sprintOpenBtn = t.closest("[data-open-sprint]");
+    const sprintCopyBtn = t.closest("[data-copy-sprint]");
+    if (sprintOpenBtn || sprintCopyBtn) {
+      if (!pinnedId) return;
+      const sc = window.SprintCodec;
+      if (!sc || typeof sc.encode !== "function") {
+        if (countsEl) countsEl.textContent = "Sprint codec missing (refresh page).";
+        return;
+      }
+      const st = loadSprintProgress(pinnedId);
+      const payload = {
+        v: 1,
+        occId: pinnedId,
+        createdAt: new Date().toISOString(),
+        startedAt: st.startedAt || null,
+        dayDone: st.dayDone || {},
+      };
+      const encoded = sc.encode(payload);
+      const u = new URL("sprint.html", location.href);
+      u.hash = `s=${encoded}`;
+      const url = u.toString();
+
+      if (sprintOpenBtn) {
+        window.open(url, "_blank", "noopener");
+        return;
+      }
+
+      try {
+        await navigator.clipboard.writeText(url);
+        if (countsEl) countsEl.textContent = "Sprint link copied.";
+        window.setTimeout(() => {
+          if (countsEl) countsEl.textContent = `${visibleNodes().length} nodes shown · ${visibleLinks(visibleNodes()).length} links shown`;
+        }, 1200);
+      } catch (_) {
+        if (countsEl) countsEl.textContent = "Copy failed.";
+      }
+      return;
+    }
 
     const startBtn = t.closest("[data-start-sprint]");
     if (startBtn) {
