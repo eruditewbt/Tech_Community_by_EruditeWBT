@@ -58,9 +58,9 @@ Skills become income through:
 
 Freelancing → Consulting → Products → Startups.
 
-## Combined sytem diagram
+## Combined system diagram
 
-![Monetization Ladder](tree_v0/diagrams/combined_system_diagram.png)
+![Combined system diagram](tree_v0/diagrams/combined_system_diagram.png)
 
 ---
 
@@ -74,6 +74,16 @@ Freelancing → Consulting → Products → Startups.
    `builders/profile_template.md`
 4. Start a Project  
    `projects/project_template.md`
+
+If you want a guided first experience:
+
+- Guided entry point: `docs/START.html`
+- Ultra-simple onboarding: `START.md`
+- Full repo map: `README_MAP.md`
+
+Core translation formula:
+
+`Field → Role → Skills → Tools → Projects → Income`
 
 ---
 
@@ -93,6 +103,11 @@ This repo ships a **civilization-scale occupation graph** (O*NET-powered) plus a
 
 - Web viewer: `docs/graph.html`
 - Exports: `civilization_graph/exports/global_v2_web/`
+
+How to use it:
+
+- `community_guides/HOW_TO_USE_THE_GRAPH.md`
+- `civilization_graph/HOW_TO_READ_THE_GRAPH.md`
 
 ---
 

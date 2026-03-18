@@ -88,6 +88,10 @@ This repo ships a **civilization-scale knowledge graph** focused on **occupation
 - Open the interactive viewer: `docs/graph.html`
 - Open exports (GraphML/JSONL): `civilization_graph/exports/global_v2_web/`
 
+Guided entry point:
+
+- `docs/START.html`
+
 ---
 
 ## Philosophy
