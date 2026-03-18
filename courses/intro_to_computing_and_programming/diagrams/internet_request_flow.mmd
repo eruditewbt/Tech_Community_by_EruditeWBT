@@ -1,0 +1,13 @@
+sequenceDiagram
+  participant U as User
+  participant B as Browser/App
+  participant D as DNS
+  participant S as Server
+
+  U->>B: Enter URL / Click link
+  B->>D: Resolve domain to IP
+  D-->>B: IP address
+  B->>S: HTTP request (to IP)
+  S-->>B: HTTP response (HTML/JSON/etc.)
+  B-->>U: Render / show result
+

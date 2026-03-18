@@ -1,0 +1,9 @@
+flowchart LR
+  S[Source code] -->|edit| E[Editor]
+  E -->|save| S
+  S -->|run| R[Interpreter / Compiler]
+  R -->|execute| P[Program running]
+  P -->|output| O[Result]
+  P -->|errors| X[Error message]
+  X -->|debug| E
+

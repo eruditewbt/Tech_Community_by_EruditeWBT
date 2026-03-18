@@ -111,6 +111,12 @@ Also:
 
 ---
 
+## Courses
+
+- Introduction to Computing & Programming (foundations track): `courses/intro_to_computing_and_programming/`
+
+---
+
 ## Community
 
 - Discord: https://discord.gg/8e4bQNknA

@@ -1,0 +1,14 @@
+flowchart LR
+  I[Input] -->|data| M[Memory (RAM)]
+  M --> F[Fetch instruction]
+  F --> D[Decode instruction]
+  D --> E[Execute instruction]
+  E -->|result| M
+  M --> O[Output]
+
+  subgraph CPU[CPU]
+    F
+    D
+    E
+  end
+
