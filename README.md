@@ -114,6 +114,10 @@ Also:
 ## Courses
 
 - Introduction to Computing & Programming (foundations track): `courses/intro_to_computing_and_programming/`
+- https://eruditewbt.github.io/Intro_to_Computing_and_Programming/
+- javascript course: https://github.com/eruditewbt/JAVASCRIPT
+- python course: https://github.com/eruditewbt/HACKCLUB
+- TYPESCRIPT: https://github.com/eruditewbt/TYPESCRIPT
 
 ---
 
