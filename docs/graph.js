@@ -5,6 +5,7 @@
   const countsEl = document.getElementById("counts");
   const selectedEl = document.getElementById("selected");
   const qEl = document.getElementById("q");
+  const searchBtnEl = document.getElementById("searchBtn");
   const typeEl = document.getElementById("type");
   const modeEl = document.getElementById("mode");
   const resetEl = document.getElementById("reset");
@@ -391,24 +392,88 @@
       .replaceAll("'", "&#039;");
   }
 
-  function applySearch() {
-    const q = (qEl?.value || "").trim().toLowerCase();
-    const t = typeEl?.value || "all";
-    if (!q) return null;
+  function normalizeSearchText(s) {
+    return String(s || "")
+      .toLowerCase()
+      .replace(/[^a-z0-9]+/g, " ")
+      .replace(/\s+/g, " ")
+      .trim();
+  }
 
-    // match by label/id
+  function setSearchFeedback(message, kind = "info") {
+    if (countsEl && message) countsEl.textContent = message;
+    if (selectedEl && kind === "error") {
+      selectedEl.innerHTML = `<b>Search:</b> ${escapeHtml(message)}`;
+    }
+  }
+
+  function rankSearchCandidate(n, rawQuery, normalizedQuery) {
+    const label = String(n.label || "");
+    const id = String(n.id || "");
+    const code = String(n.code || "");
+    const desc = String(n.description || "");
+
+    const labelLc = label.toLowerCase();
+    const idLc = id.toLowerCase();
+    const codeLc = code.toLowerCase();
+
+    const labelNorm = normalizeSearchText(label);
+    const idNorm = normalizeSearchText(id);
+    const codeNorm = normalizeSearchText(code);
+    const descNorm = normalizeSearchText(desc);
+
+    let score = -1;
+
+    if (labelLc === rawQuery || idLc === rawQuery || codeLc === rawQuery) score = Math.max(score, 1000);
+    if (labelNorm === normalizedQuery || idNorm === normalizedQuery || codeNorm === normalizedQuery) score = Math.max(score, 960);
+    if (labelLc.startsWith(rawQuery) || labelNorm.startsWith(normalizedQuery)) score = Math.max(score, 900);
+    if (idLc.startsWith(rawQuery) || codeLc.startsWith(rawQuery)) score = Math.max(score, 860);
+    if (labelLc.includes(rawQuery) || labelNorm.includes(normalizedQuery)) score = Math.max(score, 760);
+    if (idLc.includes(rawQuery) || codeLc.includes(rawQuery)) score = Math.max(score, 730);
+    if (descNorm.includes(normalizedQuery) && normalizedQuery.length >= 3) score = Math.max(score, 520);
+
+    if (score < 0 && normalizedQuery.length >= 3) {
+      const qTokens = normalizedQuery.split(" ").filter(Boolean);
+      const hay = `${labelNorm} ${idNorm} ${codeNorm} ${descNorm}`;
+      let tokenHits = 0;
+      for (const tok of qTokens) {
+        if (hay.includes(tok)) tokenHits++;
+      }
+      if (tokenHits > 0) score = 300 + tokenHits * 40;
+    }
+
+    if (score < 0) return null;
+    return { node: n, score };
+  }
+
+  function applySearch() {
+    const rawQuery = (qEl?.value || "").trim().toLowerCase();
+    const normalizedQuery = normalizeSearchText(rawQuery);
+    const t = typeEl?.value || "all";
+    if (!rawQuery || !normalizedQuery) {
+      setSearchFeedback("Type a search query first.", "error");
+      return null;
+    }
+
     let best = null;
     for (const n of nodes) {
       if (t !== "all" && n.type !== t) continue;
-      const label = (n.label || "").toLowerCase();
-      if (label === q || n.id.toLowerCase() === q) return n;
-      if (label.includes(q)) {
-        best = best || n;
-        // prefer closer labels
-        if (label.startsWith(q)) return n;
-      }
+      const ranked = rankSearchCandidate(n, rawQuery, normalizedQuery);
+      if (!ranked) continue;
+      if (!best || ranked.score > best.score) best = ranked;
     }
-    return best;
+    return best?.node || null;
+  }
+
+  function runSearch() {
+    const n = applySearch();
+    if (!n) {
+      const q = (qEl?.value || "").trim();
+      setSearchFeedback(`No result found for "${q}". Try a broader term or switch the type filter to All.`, "error");
+      return;
+    }
+    pinNode(n);
+    setSearchFeedback(`Pinned: ${n.label || n.id}`);
   }
 
   function resetView() {
@@ -889,10 +954,11 @@
 
   qEl?.addEventListener("keydown", (e) => {
     if (e.key !== "Enter") return;
-    const n = applySearch();
-    if (n) {
-      pinNode(n);
-    }
+    runSearch();
+  });
+
+  searchBtnEl?.addEventListener("click", () => {
+    runSearch();
   });
 
   modeEl?.addEventListener("change", () => {
