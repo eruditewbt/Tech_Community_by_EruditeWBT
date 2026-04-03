@@ -1,0 +1,421 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Admin | EruditeWBT Tech Community</title>
+    <meta
+      name="description"
+      content="Admin console for the EruditeWBT Tech Community. View activities, intents, contacts, live stats, and proof signals."
+    />
+
+    <link rel="icon" href="assets/eruditewbt_logo.jpg" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;600;700&family=IBM+Plex+Serif:wght@400;600&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+    <style>
+      .admin-grid {
+        display: grid;
+        gap: 12px;
+      }
+
+      .admin-grid--3 {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+      }
+
+      .admin-grid--2 {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .admin-card {
+        border: 1px solid rgba(232, 236, 245, 0.12);
+        border-radius: var(--radius);
+        background: rgba(0, 0, 0, 0.22);
+        padding: 16px;
+      }
+
+      .admin-card__k {
+        color: rgba(232, 236, 245, 0.68);
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        font-size: 12px;
+        margin-bottom: 8px;
+      }
+
+      .admin-card__t {
+        font-weight: 900;
+        letter-spacing: -0.02em;
+        margin-bottom: 8px;
+        font-size: 18px;
+      }
+
+      .admin-card__d {
+        color: var(--muted);
+        font-family: var(--serif);
+        line-height: 1.65;
+        font-size: 13px;
+      }
+
+      .admin-card__meta {
+        margin-top: 10px;
+        color: rgba(232, 236, 245, 0.78);
+        font-size: 12px;
+        line-height: 1.6;
+      }
+
+      .admin-toolbar {
+        display: flex;
+        gap: 10px;
+        flex-wrap: wrap;
+        margin-top: 14px;
+      }
+
+      .admin-field {
+        display: grid;
+        gap: 8px;
+      }
+
+      .admin-field label {
+        color: rgba(232, 236, 245, 0.78);
+        font-size: 12px;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+      }
+
+      .admin-field input,
+      .admin-field textarea {
+        width: 100%;
+        border-radius: 14px;
+        border: 1px solid rgba(232, 236, 245, 0.14);
+        background: rgba(7, 10, 15, 0.62);
+        color: rgba(232, 236, 245, 0.92);
+        padding: 12px 12px;
+        font: inherit;
+      }
+
+      .admin-field textarea {
+        min-height: 118px;
+        resize: vertical;
+      }
+
+      .statusbar {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        flex-wrap: wrap;
+        margin-top: 12px;
+      }
+
+      .statusdot {
+        width: 10px;
+        height: 10px;
+        border-radius: 999px;
+        background: rgba(255, 106, 61, 0.8);
+        box-shadow: 0 0 0 6px rgba(255, 106, 61, 0.12);
+      }
+
+      .statusdot.is-on {
+        background: rgba(39, 208, 160, 0.85);
+        box-shadow: 0 0 0 6px rgba(39, 208, 160, 0.12);
+      }
+
+      .statuscopy {
+        color: rgba(232, 236, 245, 0.82);
+        font-size: 13px;
+        font-weight: 700;
+      }
+
+      .stacklist {
+        display: grid;
+        gap: 10px;
+      }
+
+      .stackitem {
+        border: 1px solid rgba(232, 236, 245, 0.12);
+        border-radius: 16px;
+        background: rgba(0, 0, 0, 0.18);
+        padding: 12px;
+      }
+
+      .stackitem__top {
+        display: flex;
+        gap: 10px;
+        justify-content: space-between;
+        align-items: flex-start;
+      }
+
+      .stackitem__title {
+        font-weight: 900;
+        letter-spacing: -0.02em;
+      }
+
+      .stackitem__meta {
+        color: rgba(232, 236, 245, 0.72);
+        font-size: 12px;
+        line-height: 1.55;
+      }
+
+      .stackitem__body {
+        margin-top: 8px;
+        color: var(--muted);
+        font-family: var(--serif);
+        line-height: 1.6;
+        font-size: 13px;
+      }
+
+      .mono {
+        font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, "Liberation Mono", monospace;
+      }
+
+      @media (max-width: 900px) {
+        .admin-grid--3,
+        .admin-grid--2 {
+          grid-template-columns: 1fr;
+        }
+      }
+    </style>
+  </head>
+
+  <body>
+    <a class="skip" href="#main">Skip to content</a>
+
+    <header class="top">
+      <div class="top__inner">
+        <div class="brand">
+          <img class="brand__logo" src="assets/eruditewbt_logo.jpg" alt="EruditeWBT logo" />
+          <div class="brand__text">
+            <div class="brand__name">Admin Console</div>
+            <div class="brand__sub">Live activity, intents, contacts, and proof signals</div>
+          </div>
+        </div>
+
+        <nav class="nav" aria-label="Primary">
+          <a class="nav__link" href="./">Home</a>
+          <a class="nav__link" href="./graph.html">Graph</a>
+          <a class="nav__link" href="./progress.html">Progress</a>
+          <a class="nav__link" href="./join.html">Join</a>
+        </nav>
+      </div>
+    </header>
+
+    <main id="main" class="main">
+      <section class="hero hero--alt">
+        <div class="hero__bg" aria-hidden="true"></div>
+        <div class="hero__grid">
+          <div class="hero__copy">
+            <p class="eyebrow">Restricted view</p>
+            <h1 class="hero__title">See the live state of the community.</h1>
+            <p class="hero__lede">
+              Connect with a token, then review recent activities, intents, contact messages, live stats, and proof
+              signals coming from the Netlify API layer.
+            </p>
+
+            <div class="cta">
+              <a class="btn btn--ghost" href="./progress.html">Open Progress</a>
+              <a class="btn btn--quiet" href="./graph.html">Open Graph</a>
+              <a class="btn btn--primary" href="#connect">Connect Token</a>
+            </div>
+
+            <div class="statusbar">
+              <span class="statusdot" id="adminStatusDot" aria-hidden="true"></span>
+              <span class="statuscopy" id="adminStatus">Disconnected. Enter admin token to load data.</span>
+            </div>
+          </div>
+
+          <div class="hero__panel">
+            <div class="panel">
+              <div class="panel__head">
+                <div class="panel__title">Security note</div>
+                <div class="panel__hint">Token stays in sessionStorage</div>
+              </div>
+              <div style="padding: 16px">
+                <p class="p">
+                  This page sends the admin token only in request headers. The token is not written into the page URL.
+                </p>
+                <p class="p">
+                  Assumption: the Netlify functions validate `Authorization: Bearer ...` or `X-Admin-Token` on the
+                  server side before returning sensitive data.
+                </p>
+              </div>
+              <div class="panel__foot">
+                <a class="inline" href="#live">View live data</a>
+                <span class="dot" aria-hidden="true"></span>
+                <a class="inline" href="#messages">View messages</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section" id="connect">
+        <div class="section__head">
+          <h2 class="section__title">Connect To The API</h2>
+          <p class="section__sub">
+            Enter the token once per browser session. You can refresh or clear it at any time.
+          </p>
+        </div>
+
+        <div class="admin-grid admin-grid--2">
+          <div class="admin-card">
+            <div class="admin-card__k">Admin Access</div>
+            <div class="admin-field" style="margin-top: 12px">
+              <label for="apiBase">API base URL</label>
+              <input id="apiBase" type="url" autocomplete="off" placeholder="/.netlify/functions or https://api.example.com/.netlify/functions" />
+            </div>
+            <div class="admin-field">
+              <label for="adminToken">Admin token</label>
+              <input id="adminToken" type="password" autocomplete="off" placeholder="Enter admin token" />
+            </div>
+            <div class="admin-toolbar">
+              <button class="btn btn--primary" id="connectBtn" type="button">Connect</button>
+              <button class="btn btn--ghost" id="refreshBtn" type="button">Refresh</button>
+              <button class="btn btn--quiet" id="clearBtn" type="button">Clear</button>
+            </div>
+            <div class="admin-card__meta">
+              Expected endpoints: `/.netlify/functions/admin-dashboard`, `admin-activities`, `intent-submit`,
+              `contact-submit`, `live-data`.
+            </div>
+          </div>
+
+          <div class="admin-card">
+            <div class="admin-card__k">Current View</div>
+            <div class="admin-card__t">Live platform snapshot</div>
+            <div class="admin-card__d" id="snapshotText">
+              No data loaded yet. Connect with a token and the dashboard will populate automatically.
+            </div>
+            <div class="admin-card__meta">
+              This page will also work if the API only exposes separate list endpoints instead of one dashboard endpoint.
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section" id="live">
+        <div class="section__head">
+          <h2 class="section__title">Live Stats</h2>
+          <p class="section__sub">These are the platform signals most useful for operating the community day to day.</p>
+        </div>
+
+        <div class="admin-grid admin-grid--3">
+          <div class="admin-card">
+            <div class="admin-card__k">Active Projects</div>
+            <div class="admin-card__t" id="liveActiveProjects">—</div>
+            <div class="admin-card__d">How many seeded or live projects are currently visible.</div>
+          </div>
+          <div class="admin-card">
+            <div class="admin-card__k">Open Roles</div>
+            <div class="admin-card__t" id="liveOpenRoles">—</div>
+            <div class="admin-card__d">How many roles are currently open across projects and community work.</div>
+          </div>
+          <div class="admin-card">
+            <div class="admin-card__k">Current Sprint</div>
+            <div class="admin-card__t" id="liveCurrentSprint">—</div>
+            <div class="admin-card__d">The sprint or cycle currently in motion.</div>
+          </div>
+          <div class="admin-card">
+            <div class="admin-card__k">Ideas In Voting</div>
+            <div class="admin-card__t" id="liveIdeasInVoting">—</div>
+            <div class="admin-card__d">How many proposals are currently being discussed or voted on.</div>
+          </div>
+          <div class="admin-card">
+            <div class="admin-card__k">Recent Proof</div>
+            <div class="admin-card__t" id="liveProofCount">—</div>
+            <div class="admin-card__d">How many proof items were returned by the API.</div>
+          </div>
+          <div class="admin-card">
+            <div class="admin-card__k">Last Sync</div>
+            <div class="admin-card__t" id="liveLastSync">—</div>
+            <div class="admin-card__d">When the dashboard last refreshed from the API.</div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section" id="messages">
+        <div class="section__head">
+          <h2 class="section__title">Recent Activities, Intents, and Messages</h2>
+          <p class="section__sub">This section can show a single dashboard payload or separate list endpoints.</p>
+        </div>
+
+        <div class="admin-grid admin-grid--2">
+          <div class="admin-card">
+            <div class="admin-card__k">Recent Activities</div>
+            <div class="stacklist" id="activitiesList">
+              <div class="stackitem">
+                <div class="stackitem__top">
+                  <div class="stackitem__title">Waiting for data</div>
+                  <div class="stackitem__meta mono">GET admin-activities</div>
+                </div>
+                <div class="stackitem__body">Connect to the API to see recent user and platform activity.</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="admin-card">
+            <div class="admin-card__k">Recent Intents</div>
+            <div class="stacklist" id="intentsList">
+              <div class="stackitem">
+                <div class="stackitem__top">
+                  <div class="stackitem__title">Waiting for data</div>
+                  <div class="stackitem__meta mono">GET intent-submit</div>
+                </div>
+                <div class="stackitem__body">User intents will appear here after the API is connected.</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="admin-card">
+            <div class="admin-card__k">Contact Messages</div>
+            <div class="stacklist" id="contactsList">
+              <div class="stackitem">
+                <div class="stackitem__top">
+                  <div class="stackitem__title">Waiting for data</div>
+                  <div class="stackitem__meta mono">GET contact-submit</div>
+                </div>
+                <div class="stackitem__body">Messages sent by users will appear here and can also be mailed to Outlook.</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="admin-card">
+            <div class="admin-card__k">Proof Signals</div>
+            <div class="stacklist" id="proofSignalsList">
+              <div class="stackitem">
+                <div class="stackitem__top">
+                  <div class="stackitem__title">Waiting for data</div>
+                  <div class="stackitem__meta mono">GET live-data</div>
+                </div>
+                <div class="stackitem__body">Proof signals, sprint completions, and activity summaries will appear here.</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <footer class="foot">
+        <div class="foot__inner">
+          <div class="foot__left">
+            <div class="foot__brand">
+              <img class="foot__logo" src="assets/eruditewbt_logo.jpg" alt="" />
+              <div>
+                <div class="foot__title">EruditeWBT Tech Community</div>
+                <div class="foot__sub">Admin view for live platform operations</div>
+              </div>
+            </div>
+            <div class="foot__fine">Use this to keep the platform moving: intents, activities, messages, and proof.</div>
+          </div>
+          <div class="foot__right">
+            <a class="foot__link" href="./index.html">Home</a>
+            <a class="foot__link" href="./join.html">Join</a>
+            <a class="foot__link" href="./progress.html">Progress</a>
+          </div>
+        </div>
+      </footer>
+    </main>
+
+    <script src="admin.js"></script>
+  </body>
+</html>

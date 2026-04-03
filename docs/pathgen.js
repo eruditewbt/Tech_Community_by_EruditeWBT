@@ -496,6 +496,8 @@
       "https://github.com/eruditewbt/Tech_Community_by_EruditeWBT/tree/main/templates";
 
     const commonLinks = [
+      _link("Learn", "./learn.html"),
+      _link("Join", "./join.html"),
       _link("How to use the graph", guideBase + "HOW_TO_USE_THE_GRAPH.md"),
       _link("Weekly system", guideBase + "WEEKLY_SYSTEM.md"),
       _link("Project tracks", tracksBase),

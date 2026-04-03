@@ -547,6 +547,9 @@
         <button class="miniBtn" type="button" data-copy-discord="1">Copy Discord Update</button>
         <a class="miniBtn" href="https://github.com/eruditewbt/Tech_Community_by_EruditeWBT/tree/main/projects/tracks" target="_blank" rel="noreferrer">Open Tracks</a>
         <a class="miniBtn" href="https://github.com/eruditewbt/Tech_Community_by_EruditeWBT/blob/main/community_guides/HOW_TO_USE_THE_GRAPH.md" target="_blank" rel="noreferrer">Guide</a>
+        <a class="miniBtn" href="./learn.html">Learn</a>
+        <a class="miniBtn" href="./projects.html">Projects</a>
+        <a class="miniBtn" href="./join.html">Join</a>
         <a class="miniBtn" href="./START.html">Start</a>
       </div>
 

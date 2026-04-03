@@ -893,6 +893,241 @@ a {
   letter-spacing: -0.01em;
 }
 
+.hero__trust {
+  margin-top: 16px;
+  max-width: 64ch;
+  color: rgba(232, 236, 245, 0.78);
+  font-family: var(--serif);
+  line-height: 1.6;
+}
+
+.entrygrid,
+.cardgrid,
+.signalgrid,
+.feedgrid,
+.projectgrid,
+.platformgrid {
+  display: grid;
+  gap: 12px;
+}
+
+.entrygrid {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.cardgrid,
+.signalgrid,
+.feedgrid,
+.projectgrid,
+.platformgrid {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.card,
+.signal,
+.feed,
+.project,
+.platform,
+.heroCallout {
+  border: 1px solid rgba(232, 236, 245, 0.12);
+  border-radius: var(--radius);
+  background: rgba(0, 0, 0, 0.22);
+  padding: 16px;
+}
+
+.card:hover,
+.project:hover,
+.platform:hover {
+  border-color: rgba(39, 208, 160, 0.24);
+  background: rgba(0, 0, 0, 0.27);
+}
+
+.card {
+  text-decoration: none;
+  transition: transform 180ms ease, border 180ms ease, background 180ms ease;
+}
+
+.card:hover,
+.project:hover,
+.platform:hover {
+  transform: translateY(-2px);
+}
+
+.card__k,
+.signal__k,
+.feed__k,
+.project__k,
+.platform__k {
+  color: rgba(232, 236, 245, 0.68);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  font-size: 12px;
+  margin-bottom: 8px;
+}
+
+.card__t,
+.signal__t,
+.feed__t,
+.project__t,
+.platform__t {
+  font-weight: 900;
+  letter-spacing: -0.02em;
+  margin-bottom: 8px;
+}
+
+.card__d,
+.signal__d,
+.feed__d,
+.project__d,
+.platform__d {
+  color: var(--muted);
+  font-family: var(--serif);
+  line-height: 1.6;
+  font-size: 13px;
+}
+
+.card__actions,
+.project__actions,
+.platform__actions {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin-top: 14px;
+}
+
+.signal__n {
+  font-size: 28px;
+  font-weight: 900;
+  letter-spacing: -0.03em;
+}
+
+.signal__d {
+  margin-top: 6px;
+}
+
+.feed__meta,
+.project__meta {
+  margin-top: 10px;
+  color: rgba(232, 236, 245, 0.76);
+  font-size: 12px;
+  line-height: 1.6;
+}
+
+.project__tags,
+.pillrow {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  margin-top: 10px;
+}
+
+.tag,
+.pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  border: 1px solid rgba(232, 236, 245, 0.12);
+  border-radius: 999px;
+  padding: 6px 10px;
+  background: rgba(232, 236, 245, 0.04);
+  color: rgba(232, 236, 245, 0.86);
+  font-size: 12px;
+  font-weight: 800;
+}
+
+.tag--hot,
+.pill--hot {
+  border-color: rgba(255, 106, 61, 0.28);
+  background: rgba(255, 106, 61, 0.1);
+}
+
+.tag--mint,
+.pill--mint {
+  border-color: rgba(39, 208, 160, 0.28);
+  background: rgba(39, 208, 160, 0.08);
+}
+
+.tag--gold,
+.pill--gold {
+  border-color: rgba(241, 198, 106, 0.26);
+  background: rgba(241, 198, 106, 0.08);
+}
+
+.heroCallout__title {
+  margin: 0 0 10px;
+  font-size: 18px;
+  letter-spacing: -0.02em;
+}
+
+.heroCallout__text {
+  margin: 0;
+  color: var(--muted);
+  font-family: var(--serif);
+  line-height: 1.65;
+}
+
+.stack {
+  display: grid;
+  gap: 12px;
+}
+
+.admin-field {
+  display: grid;
+  gap: 8px;
+}
+
+.admin-field label {
+  color: rgba(232, 236, 245, 0.78);
+  font-size: 12px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.admin-field input,
+.admin-field textarea {
+  width: 100%;
+  border-radius: 14px;
+  border: 1px solid rgba(232, 236, 245, 0.14);
+  background: rgba(7, 10, 15, 0.62);
+  color: rgba(232, 236, 245, 0.92);
+  padding: 12px 12px;
+  font: inherit;
+}
+
+.admin-field textarea {
+  min-height: 118px;
+  resize: vertical;
+}
+
+.platform {
+  text-decoration: none;
+}
+
+.platform__role {
+  margin-top: 8px;
+  color: rgba(232, 236, 245, 0.82);
+  font-size: 12px;
+  font-weight: 800;
+}
+
+.callstrip {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  align-items: center;
+  border: 1px solid rgba(232, 236, 245, 0.12);
+  border-radius: 16px;
+  background: rgba(0, 0, 0, 0.22);
+  padding: 14px;
+}
+
+.callstrip__text {
+  color: var(--muted);
+  font-family: var(--serif);
+  line-height: 1.6;
+  flex: 1 1 280px;
+}
+
 @media (max-width: 980px) {
   .hero__grid {
     grid-template-columns: 1fr;
@@ -911,6 +1146,15 @@ a {
   }
 
   .roadmap {
+    grid-template-columns: 1fr;
+  }
+
+  .entrygrid,
+  .cardgrid,
+  .signalgrid,
+  .feedgrid,
+  .projectgrid,
+  .platformgrid {
     grid-template-columns: 1fr;
   }
 

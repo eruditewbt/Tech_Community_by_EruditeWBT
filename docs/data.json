@@ -1,0 +1,26 @@
+{
+  "activeProjects": 3,
+  "openRoles": 11,
+  "currentSprint": "Week 2",
+  "ideasInVoting": 2,
+  "proofFeed": [
+    {
+      "label": "Sprint Signal",
+      "title": "Path generator + sprint flow already live",
+      "description": "Users can explore the graph, generate a path, and create a sprint proof page from a real occupation node.",
+      "meta": "Next action: connect more project pathways and role signals into the sprint loop."
+    },
+    {
+      "label": "Community Signal",
+      "title": "Intro to computing foundations already prepared",
+      "description": "The foundations course gives beginners a clean way to move from setup to first code to first project contribution.",
+      "meta": "Next action: route more homepage traffic into the foundations repo and course path."
+    },
+    {
+      "label": "Project Signal",
+      "title": "Three starter project tracks seeded",
+      "description": "The platform now has beginner, cross-field, and advanced technical directions to create visible movement immediately.",
+      "meta": "Next action: fill roles, enter sprint, and publish proof updates weekly."
+    }
+  ]
+}

@@ -5,9 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta
       name="description"
-      content="EruditeWBT Tech Community — a builder ecosystem + civilization graph of occupations, skills, and the computing pillars that digitize the world."
+      content="EruditeWBT Tech Community — a multidisciplinary ecosystem where people from any field can find a path, join teams, start projects, and build visible outcomes."
     />
-    <title>EruditeWBT Tech Community | Civilization Graph</title>
+    <title>EruditeWBT Tech Community | Path, Projects, Proof</title>
 
     <link rel="icon" href="assets/eruditewbt_logo.jpg" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -28,15 +28,16 @@
           <img class="brand__logo" src="assets/eruditewbt_logo.jpg" alt="EruditeWBT logo" />
           <div class="brand__text">
             <div class="brand__name">EruditeWBT Tech Community</div>
-            <div class="brand__sub">Civilization Graph + Builder Ecosystem</div>
+            <div class="brand__sub">Pathfinding, projects, teams, and visible proof</div>
           </div>
         </div>
 
         <nav class="nav" aria-label="Primary">
           <a class="nav__link" href="./START.html">Start</a>
-          <a class="nav__link" href="./graph.html">Civilization Graph</a>
-          <a class="nav__link" href="./what.html">What Is This?</a>
-          <a class="nav__link" href="#links">Links</a>
+          <a class="nav__link" href="./graph.html">Explore</a>
+          <a class="nav__link" href="./learn.html">Learn</a>
+          <a class="nav__link" href="./projects.html">Projects</a>
+          <a class="nav__link" href="./join.html">Join</a>
         </nav>
       </div>
     </header>
@@ -47,39 +48,43 @@
         <div class="hero__grid">
           <div class="hero__copy">
             <p class="eyebrow">Powered by EruditeWBT</p>
-            <h1 class="hero__title">Understand how the modern world works.</h1>
+            <h1 class="hero__title">Turn your ideas, skills, or career confusion into real projects, teams, and visible outcomes.</h1>
             <p class="hero__lede">
-              Explore careers, skills, and opportunity through a living map of occupations — then follow a structured
-              path to build proof and earn.
+              This is a multidisciplinary tech community for beginners, engineers, domain experts, designers, founders,
+              and builders across fields. We help people move from idea -&gt; team -&gt; project -&gt; proof -&gt; opportunity.
+            </p>
+            <p class="hero__trust">
+              The world is changing faster than most people can adapt alone. This ecosystem exists to help people from
+              any field understand their path, find the right collaborators, and turn ideas into visible progress.
             </p>
 
             <div class="cta">
-              <a class="btn btn--primary" href="./graph.html">Explore the Graph</a>
-              <a class="btn btn--ghost" href="./START.html">Start Your Journey</a>
-              <a class="btn btn--quiet" href="https://discord.gg/8e4bQNknA" target="_blank" rel="noreferrer">Join Discord</a>
+              <a class="btn btn--primary" href="./START.html">Start Here (Recommended)</a>
+              <a class="btn btn--ghost" href="./graph.html">Explore the Graph</a>
+              <a class="btn btn--quiet" href="./join.html">Post Your Intent</a>
             </div>
 
             <div class="stats" id="stats">
               <div class="stat">
                 <div class="stat__n" id="statNodes">—</div>
-                <div class="stat__k">nodes</div>
+                <div class="stat__k">graph nodes</div>
               </div>
               <div class="stat">
                 <div class="stat__n" id="statEdges">—</div>
-                <div class="stat__k">edges</div>
+                <div class="stat__k">graph edges</div>
               </div>
               <div class="stat">
-                <div class="stat__n">O*NET</div>
-                <div class="stat__k">ground truth</div>
+                <div class="stat__n">30 days</div>
+                <div class="stat__k">to join, build, and show proof</div>
               </div>
             </div>
           </div>
 
-          <div class="hero__panel">
+          <div class="stack">
             <div class="panel">
               <div class="panel__head">
-                <div class="panel__title">The System</div>
-                <div class="panel__hint">Graph → Path → Proof → Outcome</div>
+                <div class="panel__title">The Operating Loop</div>
+                <div class="panel__hint">Explore → Learn → Build → Sprint → Proof</div>
               </div>
               <button class="panel__img" type="button" data-modal-img="assets/system_map.svg">
                 <img src="assets/system_map.svg" alt="System map diagram" loading="lazy" />
@@ -87,139 +92,332 @@
               <div class="panel__foot">
                 <a class="inline" href="./graph.html">Civilization Graph</a>
                 <span class="dot" aria-hidden="true"></span>
-                <a
-                  class="inline"
-                  href="https://github.com/eruditewbt/engineering-tree-community_repo"
-                  target="_blank"
-                  rel="noreferrer"
-                >
-                  Engineering Tree Repo
-                </a>
+                <a class="inline" href="./progress.html">Sprint + Proof</a>
+              </div>
+            </div>
+
+            <div class="heroCallout">
+              <h2 class="heroCallout__title">What success looks like in 30 days</h2>
+              <p class="heroCallout__text">
+                Join a team, contribute to a project, complete a sprint, and leave with visible proof of work you can
+                share.
+              </p>
+              <div class="pillrow">
+                <span class="pill pill--mint">Role suggestion</span>
+                <span class="pill pill--gold">Project match</span>
+                <span class="pill pill--hot">Sprint proof</span>
               </div>
             </div>
           </div>
         </div>
       </section>
 
-      <section class="section">
+      <section class="section" id="entry">
         <div class="section__head">
-          <h2 class="section__title">A Simple Loop That Works</h2>
-          <p class="section__sub">The goal is not to “learn everything”. The goal is to build outcomes and compound.</p>
-        </div>
-
-        <div class="roadmap">
-          <div class="roadmap__card">
-            <div class="roadmap__k">Step 1</div>
-            <div class="roadmap__t">Explore</div>
-            <ul class="list">
-              <li>Open the graph</li>
-              <li>Search a role</li>
-              <li>Pin a node</li>
-            </ul>
-          </div>
-          <div class="roadmap__card">
-            <div class="roadmap__k">Step 2</div>
-            <div class="roadmap__t">Learn</div>
-            <ul class="list">
-              <li>Choose one pillar</li>
-              <li>Pick one tool/tech</li>
-              <li>Read the guides</li>
-            </ul>
-          </div>
-          <div class="roadmap__card">
-            <div class="roadmap__k">Step 3</div>
-            <div class="roadmap__t">Build</div>
-            <ul class="list">
-              <li>Ship a small project</li>
-              <li>Write it up</li>
-              <li>Repeat weekly</li>
-            </ul>
-          </div>
-        </div>
-      </section>
-
-      <section class="section" id="start">
-        <div class="section__head">
-          <h2 class="section__title">Start Here</h2>
+          <h2 class="section__title">Choose Your Entry Point</h2>
           <p class="section__sub">
-            Do this once, then build weekly. The graph gives the map; the tree gives the path.
+            Start with the path that matches your current intent. If you are not sure, use the recommended path and we
+            will guide you into the right role, repo, and first action.
           </p>
         </div>
 
-        <div class="steps">
-          <a class="step" href="./graph.html">
-            <div class="step__n">01</div>
-            <div class="step__b">
-              <div class="step__t">Explore the Civilization Graph</div>
-              <div class="step__d">See how occupations connect to tools, tech, industries, and computing pillars.</div>
+        <div class="entrygrid">
+          <a class="card" href="./START.html">
+            <div class="card__k">Recommended</div>
+            <div class="card__t">Start Here</div>
+            <div class="card__d">Answer a few simple questions, get your role suggestion, your repo direction, and your next action.</div>
+            <div class="card__actions">
+              <span class="miniBtn">Guided start</span>
             </div>
           </a>
 
-          <a
-            class="step"
-            href="https://github.com/eruditewbt/Tech_Community_by_EruditeWBT/blob/main/manifesto/BUILDER_MANIFESTO.md"
-            target="_blank"
-            rel="noreferrer"
-          >
-            <div class="step__n">02</div>
-            <div class="step__b">
-              <div class="step__t">Read the Builder Manifesto</div>
-              <div class="step__d">The culture: build, document, teach forward, create economic opportunity.</div>
+          <a class="card" href="./learn.html">
+            <div class="card__k">I Want To Learn</div>
+            <div class="card__t">Choose a learning path</div>
+            <div class="card__d">Move from foundations into JavaScript, Python, systems thinking, or tech-for-non-tech tracks.</div>
+            <div class="card__actions">
+              <span class="miniBtn">See courses</span>
             </div>
           </a>
 
-          <a
-            class="step"
-            href="https://github.com/eruditewbt/engineering-tree-community_repo"
-            target="_blank"
-            rel="noreferrer"
-          >
-            <div class="step__n">03</div>
-            <div class="step__b">
-              <div class="step__t">Pick a Branch (Engineering Tree)</div>
-              <div class="step__d">Use the tree to choose a path, then ship projects as proof.</div>
+          <a class="card" href="./projects.html">
+            <div class="card__k">I Want To Build</div>
+            <div class="card__t">Join a moving project</div>
+            <div class="card__d">See active project types, open roles, sprint goals, and where you can contribute right now.</div>
+            <div class="card__actions">
+              <span class="miniBtn">Browse projects</span>
             </div>
           </a>
 
-          <a class="step" href="https://discord.gg/8e4bQNknA" target="_blank" rel="noreferrer">
-            <div class="step__n">04</div>
-            <div class="step__b">
-              <div class="step__t">Post Your 90-Day Build Goal</div>
-              <div class="step__d">We don’t do passive learning. We build.</div>
+          <a class="card" href="./ideas.html">
+            <div class="card__k">I Have An Idea</div>
+            <div class="card__t">Turn an idea into a proposal</div>
+            <div class="card__d">Frame the problem, attract collaborators, and move toward a sprint-backed project.</div>
+            <div class="card__actions">
+              <span class="miniBtn">See proposal flow</span>
+            </div>
+          </a>
+
+          <a class="card" href="./roles.html">
+            <div class="card__k">I Want To Collaborate</div>
+            <div class="card__t">See where you fit</div>
+            <div class="card__d">Find the role you can play whether you are technical, non-technical, or somewhere in between.</div>
+            <div class="card__actions">
+              <span class="miniBtn">Find my role</span>
+            </div>
+          </a>
+
+          <a class="card" href="./join.html">
+            <div class="card__k">First Action</div>
+            <div class="card__t">Post your intent</div>
+            <div class="card__d">Use a simple format: Name, Field, I want to, Skills, Looking for. Then enter the right channel.</div>
+            <div class="card__actions">
+              <span class="miniBtn">Post intent</span>
             </div>
           </a>
         </div>
       </section>
 
-      <section class="section" id="links">
+      <section class="section" id="live">
         <div class="section__head">
-          <h2 class="section__title">Links</h2>
-          <p class="section__sub">Join, watch, and follow the build.</p>
+          <h2 class="section__title">Live Platform State</h2>
+          <p class="section__sub">
+            This should feel like an active ecosystem, not a passive archive. These signals make the platform feel real
+            from the first visit.
+          </p>
+        </div>
+
+        <div class="signalgrid">
+          <div class="signal">
+            <div class="signal__k">Active Projects</div>
+            <div class="signal__n" id="liveActiveProjects">3</div>
+            <div class="signal__d">Beginner build, cross-field workflow, and an advanced technical system are seeded now.</div>
+          </div>
+          <div class="signal">
+            <div class="signal__k">Open Roles</div>
+            <div class="signal__n" id="liveOpenRoles">11</div>
+            <div class="signal__d">Frontend, Python, data, design, documentation, product thinking, and domain expertise.</div>
+          </div>
+          <div class="signal">
+            <div class="signal__k">Current Sprint</div>
+            <div class="signal__n" id="liveCurrentSprint">Week 2</div>
+            <div class="signal__d">This week focuses on project setup, repo alignment, early prototypes, and first proof pages.</div>
+          </div>
+          <div class="signal">
+            <div class="signal__k">Ideas In Voting</div>
+            <div class="signal__n" id="liveIdeasInVoting">2</div>
+            <div class="signal__d">A small queue of ideas keeps the project layer moving without overwhelming the community.</div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section" id="projects-preview">
+        <div class="section__head">
+          <h2 class="section__title">Projects You Can Join Now</h2>
+          <p class="section__sub">
+            Each project should feel alive, role-open, and worth joining immediately. These seed the ecosystem with
+            visible momentum.
+          </p>
+        </div>
+
+        <div class="projectgrid">
+          <article class="project">
+            <div class="project__k">Beginner-Friendly</div>
+            <div class="project__t">Educational Automation Toolkit</div>
+            <div class="project__d">
+              A practical learning system for structured lessons, templates, and reusable project workflows that new
+              members can contribute to quickly.
+            </div>
+            <div class="project__tags">
+              <span class="tag tag--mint">Sprint 2 active</span>
+              <span class="tag">Docs</span>
+              <span class="tag">JavaScript</span>
+              <span class="tag">Beginner roles open</span>
+            </div>
+            <div class="project__meta">Need: documentation, UI polish, content cleanup, onboarding helpers. Next goal: ship a cleaner starter path this week.</div>
+            <div class="project__actions">
+              <a class="miniBtn" href="./projects.html">See project</a>
+              <a class="miniBtn" href="./join.html">Join this sprint</a>
+            </div>
+          </article>
+
+          <article class="project">
+            <div class="project__k">Cross-Field</div>
+            <div class="project__t">Healthcare Intake Workflow Tool</div>
+            <div class="project__d">
+              A collaboration model where domain experts define the problem, engineers shape the system, and designers
+              improve the experience.
+            </div>
+            <div class="project__tags">
+              <span class="tag tag--gold">Domain + tech</span>
+              <span class="tag">Data flow</span>
+              <span class="tag">UX</span>
+              <span class="tag tag--hot">Join before next sprint</span>
+            </div>
+            <div class="project__meta">Need: healthcare insight, workflow mapping, frontend support, data structure review. Next goal: validate the first intake flow.</div>
+            <div class="project__actions">
+              <a class="miniBtn" href="./roles.html">See roles</a>
+              <a class="miniBtn" href="./ideas.html">Proposal flow</a>
+            </div>
+          </article>
+
+          <article class="project">
+            <div class="project__k">Advanced System</div>
+            <div class="project__t">AI Content and Analytics Engine</div>
+            <div class="project__d">
+              An advanced workflow around content generation, analytics, automation, and proof systems for future
+              enterprise-grade tooling.
+            </div>
+            <div class="project__tags">
+              <span class="tag tag--hot">High-impact</span>
+              <span class="tag">Python</span>
+              <span class="tag">Automation</span>
+              <span class="tag">Analytics</span>
+            </div>
+            <div class="project__meta">Need: backend, automation logic, data analysis, system structure. Next goal: lock the next MVP slice in the current sprint.</div>
+            <div class="project__actions">
+              <a class="miniBtn" href="./projects.html">Open projects</a>
+              <a class="miniBtn" href="./progress.html">Track progress</a>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <section class="section" id="proof">
+        <div class="section__head">
+          <h2 class="section__title">Recent Proof Feed</h2>
+          <p class="section__sub">
+            Proof pages are strong, but a feed creates momentum. People should be able to see progress, not just read
+            promises.
+          </p>
+        </div>
+
+        <div class="feedgrid" id="proofFeed">
+          <div class="feed">
+            <div class="feed__k">Loading</div>
+            <div class="feed__t">Loading proof feed…</div>
+            <div class="feed__d">The latest visible activity will appear here.</div>
+            <div class="feed__meta">If this stays visible, reload the page and check `docs/data.json`.</div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section" id="roles">
+        <div class="section__head">
+          <h2 class="section__title">How Different People Work Together Here</h2>
+          <p class="section__sub">
+            This is not only a developer community. It is a collaboration system where technical and non-technical
+            people can move the same project forward together.
+          </p>
+        </div>
+
+        <div class="cardgrid">
+          <div class="card">
+            <div class="card__k">Problem</div>
+            <div class="card__t">Domain Expert</div>
+            <div class="card__d">Defines the real need, constraints, users, and success conditions in the field.</div>
+          </div>
+          <div class="card">
+            <div class="card__k">System</div>
+            <div class="card__t">Engineer</div>
+            <div class="card__d">Designs the architecture, builds the workflow, and turns the problem into a functioning system.</div>
+          </div>
+          <div class="card">
+            <div class="card__k">Experience</div>
+            <div class="card__t">Designer / Operator</div>
+            <div class="card__d">Shapes usability, adoption, process clarity, and how the system actually works in real life.</div>
+          </div>
+        </div>
+
+        <div class="callstrip" style="margin-top: 12px">
+          <div class="callstrip__text">
+            Signature flow: <strong>Problem → Domain Expert → Engineer → Designer → Operator → Outcome</strong>
+          </div>
+          <a class="btn btn--ghost" href="./roles.html">See all roles</a>
+          <a class="btn btn--quiet" href="./collaborate.html">How collaboration works</a>
+        </div>
+      </section>
+
+      <section class="section" id="platforms">
+        <div class="section__head">
+          <h2 class="section__title">Where To Go Next</h2>
+          <p class="section__sub">Each platform has a job. Use them as a system, not as a scattered list of links.</p>
+        </div>
+
+        <div class="platformgrid">
+          <a class="platform" href="https://www.youtube.com/@eruditewbt" target="_blank" rel="noreferrer">
+            <div class="platform__k">Learn</div>
+            <div class="platform__t">YouTube</div>
+            <div class="platform__d">Watch the public learning, community, and engineering content that builds trust and context.</div>
+            <div class="platform__role">Primary broadcast channel</div>
+          </a>
+
+          <a class="platform" href="https://discord.gg/8e4bQNknA" target="_blank" rel="noreferrer">
+            <div class="platform__k">Discuss</div>
+            <div class="platform__t">Discord</div>
+            <div class="platform__d">This should be the main place for active team discussion, intent posting, sprint coordination, and help.</div>
+            <div class="platform__role">Primary discussion hub</div>
+          </a>
+
+          <a class="platform" href="https://github.com/eruditewbt/Tech_Community_by_EruditeWBT" target="_blank" rel="noreferrer">
+            <div class="platform__k">Build</div>
+            <div class="platform__t">GitHub + Docs</div>
+            <div class="platform__d">Use the docs, repos, graph, and project structure as the core operating system for work.</div>
+            <div class="platform__role">Primary structured hub</div>
+          </a>
+
+          <a class="platform" href="https://t.me/coding_session_by_eruditewbt" target="_blank" rel="noreferrer">
+            <div class="platform__k">Discuss</div>
+            <div class="platform__t">Telegram</div>
+            <div class="platform__d">Fast updates, lightweight coordination, and community continuity outside the main work hub.</div>
+            <div class="platform__role">Support channel</div>
+          </a>
+
+          <a class="platform" href="https://chat.whatsapp.com/KJFAGqSsiNCAln0ZDJT6OO?mode=gi_c" target="_blank" rel="noreferrer">
+            <div class="platform__k">Discuss</div>
+            <div class="platform__t">WhatsApp</div>
+            <div class="platform__d">Low-friction community access for people who need a lighter entry point before moving into deeper collaboration.</div>
+            <div class="platform__role">Support channel</div>
+          </a>
+
+          <a class="platform" href="./join.html">
+            <div class="platform__k">Act</div>
+            <div class="platform__t">Join + Post Intent</div>
+            <div class="platform__d">Use a structured intent format, choose the right repo, and take your first visible action quickly.</div>
+            <div class="platform__role">Best first action</div>
+          </a>
+        </div>
+      </section>
+
+      <section class="section" id="repos">
+        <div class="section__head">
+          <h2 class="section__title">Choose The Right Repo</h2>
+          <p class="section__sub">People should know exactly where to go next based on what they want to do.</p>
         </div>
 
         <div class="links">
-          <a class="linkcard" href="https://discord.gg/8e4bQNknA" target="_blank" rel="noreferrer">
-            <div class="linkcard__k">Discord</div>
-            <div class="linkcard__t">Community Server</div>
-            <div class="linkcard__d">Weekly sprints, project help, build-in-public.</div>
+          <a class="linkcard" href="https://github.com/eruditewbt/Intro_to_Computing_and_Programming" target="_blank" rel="noreferrer">
+            <div class="linkcard__k">Foundations</div>
+            <div class="linkcard__t">Intro to Computing and Programming</div>
+            <div class="linkcard__d">For setup, computing basics, first code, shell, Git, editors, and beginner coding flow.</div>
           </a>
 
-          <a class="linkcard" href="https://www.youtube.com/@eruditewbt" target="_blank" rel="noreferrer">
-            <div class="linkcard__k">YouTube</div>
-            <div class="linkcard__t">@eruditewbt</div>
-            <div class="linkcard__d">Community + engineering videos.</div>
+          <a class="linkcard" href="https://github.com/eruditewbt/HACKCLUB" target="_blank" rel="noreferrer">
+            <div class="linkcard__k">Python Path</div>
+            <div class="linkcard__t">HACKCLUB</div>
+            <div class="linkcard__d">For Python-first experiments, AI-adjacent projects, and practical build momentum.</div>
           </a>
 
-          <a class="linkcard" href="https://github.com/eruditewbt/Tech_Community_by_EruditeWBT" target="_blank" rel="noreferrer">
-            <div class="linkcard__k">GitHub</div>
-            <div class="linkcard__t">Tech Community Repo</div>
-            <div class="linkcard__d">Docs, governance, launch operations, civilization graph exports.</div>
+          <a class="linkcard" href="https://github.com/eruditewbt/JAVASCRIPT" target="_blank" rel="noreferrer">
+            <div class="linkcard__k">JavaScript Path</div>
+            <div class="linkcard__t">JAVASCRIPT</div>
+            <div class="linkcard__d">For web systems, app logic, and practical JavaScript systems training.</div>
           </a>
 
-          <a class="linkcard" href="https://www.linkedin.com/in/chemiosis-daniel-34542826a" target="_blank" rel="noreferrer">
-            <div class="linkcard__k">LinkedIn</div>
-            <div class="linkcard__t">Daniel (Chemiosis)</div>
-            <div class="linkcard__d">Founder updates + milestones.</div>
+          <a class="linkcard" href="https://github.com/eruditewbt/TYPESCRIPT" target="_blank" rel="noreferrer">
+            <div class="linkcard__k">Typed Systems</div>
+            <div class="linkcard__t">TYPESCRIPT</div>
+            <div class="linkcard__d">For stronger typed frontend/backend systems and larger-scale code structure.</div>
           </a>
         </div>
       </section>
@@ -231,15 +429,19 @@
               <img class="foot__logo" src="assets/eruditewbt_logo.jpg" alt="" />
               <div>
                 <div class="foot__title">EruditeWBT Tech Community</div>
-                <div class="foot__sub">Civilization Graph + Builder Ecosystem</div>
+                <div class="foot__sub">A role-aware, multidisciplinary, goal-execution ecosystem</div>
               </div>
             </div>
-            <div class="foot__fine">Builders build. Knowledge compounds. Civilization is a graph.</div>
+            <div class="foot__fine">
+              Join the discussion. Choose a path. Pick a repo. Enter a sprint. Share proof. The goal is not passive
+              learning — it is visible progress.
+            </div>
           </div>
           <div class="foot__right">
-            <a class="foot__link" href="./graph.html">Civilization Graph</a>
-            <a class="foot__link" href="#start">Start Here</a>
-            <a class="foot__link" href="#links">Links</a>
+            <a class="foot__link" href="./graph.html">Explore</a>
+            <a class="foot__link" href="./learn.html">Learn</a>
+            <a class="foot__link" href="./projects.html">Projects</a>
+            <a class="foot__link" href="./join.html">Join</a>
           </div>
         </div>
       </footer>

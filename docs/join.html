@@ -1,0 +1,340 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Join | EruditeWBT Tech Community</title>
+    <meta name="description" content="Join the EruditeWBT Tech Community, subscribe, choose your path, and start acting." />
+    <link rel="icon" href="assets/eruditewbt_logo.jpg" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;600;700&family=IBM+Plex+Serif:wght@400;600&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="styles.css" />
+    <style>
+      .formgrid {
+        display: grid;
+        gap: 12px;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .formcard {
+        border: 1px solid rgba(232, 236, 245, 0.12);
+        border-radius: var(--radius);
+        background: rgba(0, 0, 0, 0.22);
+        padding: 16px;
+      }
+
+      .formfield {
+        display: grid;
+        gap: 8px;
+        margin-top: 12px;
+      }
+
+      .formfield label {
+        color: rgba(232, 236, 245, 0.78);
+        font-size: 12px;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+      }
+
+      .formfield input,
+      .formfield textarea {
+        width: 100%;
+        border-radius: 14px;
+        border: 1px solid rgba(232, 236, 245, 0.14);
+        background: rgba(7, 10, 15, 0.62);
+        color: rgba(232, 236, 245, 0.92);
+        padding: 12px 12px;
+        font: inherit;
+      }
+
+      .formfield textarea {
+        min-height: 122px;
+        resize: vertical;
+      }
+
+      .formstatus {
+        margin-top: 10px;
+        color: rgba(232, 236, 245, 0.82);
+        font-size: 13px;
+        line-height: 1.6;
+      }
+
+      @media (max-width: 900px) {
+        .formgrid {
+          grid-template-columns: 1fr;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <a class="skip" href="#main">Skip to content</a>
+    <header class="top">
+      <div class="top__inner">
+        <div class="brand">
+          <img class="brand__logo" src="assets/eruditewbt_logo.jpg" alt="EruditeWBT logo" />
+          <div class="brand__text">
+            <div class="brand__name">Join</div>
+            <div class="brand__sub">Start acting with the community</div>
+          </div>
+        </div>
+        <nav class="nav" aria-label="Primary">
+          <a class="nav__link" href="./">Home</a>
+          <a class="nav__link" href="./START.html">Start</a>
+          <a class="nav__link" href="./graph.html">Graph</a>
+          <a class="nav__link" href="./learn.html">Learn</a>
+          <a class="nav__link" href="./projects.html">Projects</a>
+        </nav>
+      </div>
+    </header>
+    <main id="main" class="main">
+      <section class="hero hero--alt">
+        <div class="hero__bg" aria-hidden="true"></div>
+        <div class="hero__grid">
+          <div class="hero__copy">
+            <p class="eyebrow">Action first</p>
+            <h1 class="hero__title">Join, choose a path, and start building with other people.</h1>
+            <p class="hero__lede">The goal is simple: move from confusion to direction, then from direction to visible work. We keep the core hub in GitHub and Discord, and we use YouTube to teach and build trust.</p>
+            <div class="cta">
+              <a class="btn btn--primary" href="https://discord.gg/8e4bQNknA" target="_blank" rel="noreferrer">Join Discord</a>
+              <a class="btn btn--ghost" href="https://www.youtube.com/@eruditewbt" target="_blank" rel="noreferrer">Subscribe on YouTube</a>
+              <a class="btn btn--quiet" href="https://github.com/eruditewbt/Tech_Community_by_EruditeWBT" target="_blank" rel="noreferrer">Open the Hub Repo</a>
+            </div>
+          </div>
+          <div class="hero__panel">
+            <div class="panel">
+              <div class="panel__head"><div class="panel__title">Start here (recommended)</div><div class="panel__hint">One guided path</div></div>
+              <div style="padding: 16px">
+                <div class="roadmap" style="grid-template-columns: 1fr; gap: 10px">
+                  <div class="roadmap__card"><div class="roadmap__k">1</div><div class="roadmap__t">Pick an intent</div><div class="step__d">Learn, build, idea, or collaborate.</div></div>
+                  <div class="roadmap__card"><div class="roadmap__k">2</div><div class="roadmap__t">Get routed</div><div class="step__d">We point you to a repo, guide, or project lane.</div></div>
+                  <div class="roadmap__card"><div class="roadmap__k">3</div><div class="roadmap__t">Post your intent</div><div class="step__d">Say what you want to do in the pinned community space.</div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <section class="section">
+        <div class="section__head"><h2 class="section__title">Choose Your Entry</h2><p class="section__sub">These are the four first actions we want new people to see immediately.</p></div>
+        <div class="steps">
+          <a class="step" href="./START.html"><div class="step__n">01</div><div class="step__b"><div class="step__t">I want to learn</div><div class="step__d">Open the guided start page and pick a foundation path.</div></div></a>
+          <a class="step" href="./projects.html"><div class="step__n">02</div><div class="step__b"><div class="step__t">I want to build</div><div class="step__d">See seeded projects with roles, urgency, and next steps.</div></div></a>
+          <a class="step" href="./ideas.html"><div class="step__n">03</div><div class="step__b"><div class="step__t">I have an idea</div><div class="step__d">Use the idea flow and move it toward a proposal.</div></div></a>
+          <a class="step" href="./collaborate.html"><div class="step__n">04</div><div class="step__b"><div class="step__t">I want to collaborate</div><div class="step__d">Find a role fit and join a project team.</div></div></a>
+        </div>
+      </section>
+      <section class="section">
+        <div class="section__head"><h2 class="section__title">Platform Roles and What Each Channel Does</h2><p class="section__sub">The ecosystem works better when every channel has a job instead of being a random list of links.</p></div>
+        <div class="links">
+          <a class="linkcard" href="https://github.com/eruditewbt/Tech_Community_by_EruditeWBT" target="_blank" rel="noreferrer"><div class="linkcard__k">Hub</div><div class="linkcard__t">GitHub + Docs</div><div class="linkcard__d">The core operating system for docs, graph, projects, sprint proof, and ecosystem structure.</div></a>
+          <a class="linkcard" href="https://www.youtube.com/@eruditewbt" target="_blank" rel="noreferrer"><div class="linkcard__k">Learn</div><div class="linkcard__t">YouTube</div><div class="linkcard__d">Tutorials, community videos, and trust-building explanations.</div></a>
+          <a class="linkcard" href="https://discord.gg/8e4bQNknA" target="_blank" rel="noreferrer"><div class="linkcard__k">Discuss</div><div class="linkcard__t">Discord</div><div class="linkcard__d">Primary team space for intent, help, and sprint coordination.</div></a>
+          <a class="linkcard" href="https://t.me/coding_session_by_eruditewbt" target="_blank" rel="noreferrer"><div class="linkcard__k">Discuss</div><div class="linkcard__t">Telegram</div><div class="linkcard__d">Fast discussion and community coordination.</div></a>
+          <a class="linkcard" href="https://chat.whatsapp.com/KJFAGqSsiNCAln0ZDJT6OO?mode=gi_c" target="_blank" rel="noreferrer"><div class="linkcard__k">Discuss</div><div class="linkcard__t">WhatsApp</div><div class="linkcard__d">A second discussion channel for immediate connection.</div></a>
+          <a class="linkcard" href="https://www.linkedin.com/in/chemiosis-daniel-34542826a" target="_blank" rel="noreferrer"><div class="linkcard__k">Network</div><div class="linkcard__t">LinkedIn</div><div class="linkcard__d">Founder updates, credibility, and professional context.</div></a>
+          <a class="linkcard" href="https://x.com/gbenga_oje16648" target="_blank" rel="noreferrer"><div class="linkcard__k">Network</div><div class="linkcard__t">X / Gbengs</div><div class="linkcard__d">Community voice, updates, and lightweight public momentum.</div></a>
+        </div>
+      </section>
+      <section class="section">
+        <div class="split">
+          <div class="split__col">
+            <h2 class="h3">Post your intent format</h2>
+            <p class="p">Use this format when you join Discord or a pinned community thread.</p>
+            <p class="p" style="font-family: var(--sans); font-weight: 900; letter-spacing: -0.02em">Name: Field: I want to: Skills: Looking for:</p>
+          </div>
+          <div class="split__col">
+            <h2 class="h3">What to do in your first day</h2>
+            <ul class="list"><li>join the discussion channel</li><li>subscribe on YouTube</li><li>choose a path</li><li>open the repo that matches your goal</li><li>post your intent</li></ul>
+          </div>
+        </div>
+      </section>
+      <section class="section">
+        <div class="section__head">
+          <h2 class="section__title">Post Your Intent Directly</h2>
+          <p class="section__sub">This sends your intent into the live platform backend so it can show up in the admin dashboard and community operations flow.</p>
+        </div>
+        <div class="split">
+          <div class="split__col">
+            <form id="intentForm" class="stack">
+              <div class="admin-field">
+                <label for="intentName">Name</label>
+                <input id="intentName" name="name" type="text" required />
+              </div>
+              <div class="admin-field">
+                <label for="intentEmail">Email</label>
+                <input id="intentEmail" name="email" type="email" />
+              </div>
+              <div class="admin-field">
+                <label for="intentField">Field</label>
+                <input id="intentField" name="field" type="text" placeholder="Engineering, Healthcare, Design, Education..." required />
+              </div>
+              <div class="admin-field">
+                <label for="intentGoal">I want to</label>
+                <input id="intentGoal" name="intent" type="text" placeholder="Learn, build, collaborate, switch careers..." required />
+              </div>
+              <div class="admin-field">
+                <label for="intentSkills">Skills</label>
+                <textarea id="intentSkills" name="skills" placeholder="What you already know or can help with"></textarea>
+              </div>
+              <div class="admin-field">
+                <label for="intentLookingFor">Looking for</label>
+                <textarea id="intentLookingFor" name="looking_for" placeholder="Mentorship, project team, role match, repo direction..."></textarea>
+              </div>
+              <div class="cta">
+                <button class="btn btn--primary" type="submit">Submit Intent</button>
+                <a class="btn btn--quiet" href="https://discord.gg/8e4bQNknA" target="_blank" rel="noreferrer">Also post in Discord</a>
+              </div>
+              <p class="p" id="intentFormStatus">Your submitted intent can power role matching and project routing.</p>
+            </form>
+          </div>
+          <div class="split__col">
+            <h2 class="h3">What happens next</h2>
+            <ul class="list">
+              <li>your intent is stored for admin review</li>
+              <li>it can be used to match you to a project lane</li>
+              <li>it gives the community a live signal of what people want</li>
+              <li>you should still join Discord for the fastest human follow-up</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+      <section class="section">
+        <div class="section__head">
+          <h2 class="section__title">Send A Direct Message</h2>
+          <p class="section__sub">Use this if you want to reach the community operator directly. Messages are stored and can also be mailed to `erudite-wbt@outlook.com` via the backend.</p>
+        </div>
+        <div class="split">
+          <div class="split__col">
+            <form id="contactForm" class="stack">
+              <div class="admin-field">
+                <label for="contactName">Name</label>
+                <input id="contactName" name="name" type="text" required />
+              </div>
+              <div class="admin-field">
+                <label for="contactEmail">Email</label>
+                <input id="contactEmail" name="email" type="email" required />
+              </div>
+              <div class="admin-field">
+                <label for="contactSubject">Subject</label>
+                <input id="contactSubject" name="subject" type="text" placeholder="Project idea, mentorship, partnership..." />
+              </div>
+              <div class="admin-field">
+                <label for="contactMessage">Message</label>
+                <textarea id="contactMessage" name="message" required placeholder="How can we help, or what would you like to build?"></textarea>
+              </div>
+              <div class="cta">
+                <button class="btn btn--primary" type="submit">Send Message</button>
+                <a class="btn btn--quiet" href="mailto:erudite-wbt@outlook.com">Email directly</a>
+              </div>
+              <p class="p" id="contactFormStatus">Messages are routed through the community backend and can also be delivered by email.</p>
+            </form>
+          </div>
+          <div class="split__col">
+            <h2 class="h3">Best use cases</h2>
+            <ul class="list">
+              <li>you want to propose a deeper collaboration</li>
+              <li>you want a project reviewed</li>
+              <li>you want to sponsor or partner</li>
+              <li>you need direct guidance on where to start</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+      <section class="section">
+        <div class="links">
+          <a class="linkcard" href="https://github.com/eruditewbt/Intro_to_Computing_and_Programming" target="_blank" rel="noreferrer"><div class="linkcard__k">Start</div><div class="linkcard__t">Intro to Computing and Programming</div><div class="linkcard__d">For beginners who want the shortest path to coding confidence.</div></a>
+          <a class="linkcard" href="https://github.com/eruditewbt/HACKCLUB" target="_blank" rel="noreferrer"><div class="linkcard__k">Build</div><div class="linkcard__t">HACKCLUB</div><div class="linkcard__d">Python-first experimentation, tools, and AI-oriented projects.</div></a>
+          <a class="linkcard" href="https://github.com/eruditewbt/JAVASCRIPT" target="_blank" rel="noreferrer"><div class="linkcard__k">Build</div><div class="linkcard__t">JAVASCRIPT</div><div class="linkcard__d">JavaScript systems, web work, and application building.</div></a>
+          <a class="linkcard" href="https://github.com/eruditewbt/TYPESCRIPT" target="_blank" rel="noreferrer"><div class="linkcard__k">Build</div><div class="linkcard__t">TYPESCRIPT</div><div class="linkcard__d">Typed frontend/backend work and larger systems thinking.</div></a>
+        </div>
+      </section>
+
+      <section class="section" id="forms">
+        <div class="section__head">
+          <h2 class="section__title">Post Your Intent or Contact The Team</h2>
+          <p class="section__sub">
+            These forms connect to the Netlify API. Intent submissions go to the community queue. Contact messages are
+            mailed to <span class="mono">erudite-wbt@outlook.com</span> and saved for admin review.
+          </p>
+        </div>
+
+        <div class="formgrid">
+          <form class="formcard" id="intentForm">
+            <div class="card__k">Community queue</div>
+            <div class="card__t">Post your intent</div>
+            <div class="formfield">
+              <label for="intentName">Name</label>
+              <input id="intentName" name="name" type="text" placeholder="Your name" />
+            </div>
+            <div class="formfield">
+              <label for="intentField">Field</label>
+              <input id="intentField" name="field" type="text" placeholder="Design, healthcare, engineering, etc." />
+            </div>
+            <div class="formfield">
+              <label for="intentIntent">I want to</label>
+              <input id="intentIntent" name="intent" type="text" placeholder="Join a project, learn, build, collaborate..." required />
+            </div>
+            <div class="formfield">
+              <label for="intentSkills">Skills</label>
+              <input id="intentSkills" name="skills" type="text" placeholder="What you already bring" />
+            </div>
+            <div class="formfield">
+              <label for="intentLookingFor">Looking for</label>
+              <input id="intentLookingFor" name="lookingFor" type="text" placeholder="What kind of help or team you need" />
+            </div>
+            <div class="formfield">
+              <label for="intentEmail">Email (optional)</label>
+              <input id="intentEmail" name="email" type="email" placeholder="email@example.com" />
+            </div>
+            <div class="cta" style="margin-top: 14px">
+              <button class="btn btn--primary" type="submit">Submit Intent</button>
+              <a class="btn btn--quiet" href="https://discord.gg/8e4bQNknA" target="_blank" rel="noreferrer">Also join Discord</a>
+            </div>
+            <div class="formstatus" id="intentFormStatus">This will be queued through the API.</div>
+          </form>
+
+          <form class="formcard" id="contactForm">
+            <div class="card__k">Direct message</div>
+            <div class="card__t">Contact the team</div>
+            <div class="formfield">
+              <label for="contactName">Name</label>
+              <input id="contactName" name="name" type="text" placeholder="Your name" />
+            </div>
+            <div class="formfield">
+              <label for="contactEmail">Email</label>
+              <input id="contactEmail" name="email" type="email" placeholder="email@example.com" />
+            </div>
+            <div class="formfield">
+              <label for="contactSubject">Subject</label>
+              <input id="contactSubject" name="subject" type="text" placeholder="What is this about?" />
+            </div>
+            <div class="formfield">
+              <label for="contactMessage">Message</label>
+              <textarea id="contactMessage" name="message" placeholder="Tell us what you need or how you want to contribute." required></textarea>
+            </div>
+            <div class="cta" style="margin-top: 14px">
+              <button class="btn btn--ghost" type="submit">Send Message</button>
+            </div>
+            <div class="formstatus" id="contactFormStatus">Messages are mailed and stored for admin review.</div>
+          </form>
+        </div>
+      </section>
+      <footer class="foot">
+        <div class="foot__inner">
+          <div class="foot__left">
+            <div class="foot__brand"><img class="foot__logo" src="assets/eruditewbt_logo.jpg" alt="" /><div><div class="foot__title">EruditeWBT Tech Community</div><div class="foot__sub">Join, then act.</div></div></div>
+            <div class="foot__fine">The fastest way to get started is to post your intent and take the first step.</div>
+          </div>
+          <div class="foot__right">
+            <a class="foot__link" href="./learn.html">Learn</a>
+            <a class="foot__link" href="./projects.html">Projects</a>
+            <a class="foot__link" href="./progress.html">Progress</a>
+            <a class="foot__link" href="./admin.html">Admin</a>
+          </div>
+        </div>
+      </footer>
+    </main>
+    <script src="app.js"></script>
+  </body>
+</html>
