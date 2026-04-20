@@ -6,7 +6,7 @@
     <title>Admin | EruditeWBT Tech Community</title>
     <meta
       name="description"
-      content="Admin console for the EruditeWBT Tech Community. View activities, intents, contacts, live stats, and proof signals."
+      content="Admin console for the EruditeWBT Tech Community. View activities, onboarding users, intents, contacts, live stats, and proof signals."
     />
 
     <link rel="icon" href="assets/eruditewbt_logo.jpg" />
@@ -276,8 +276,8 @@
               <button class="btn btn--quiet" id="clearBtn" type="button">Clear</button>
             </div>
             <div class="admin-card__meta">
-              Expected endpoints: `/.netlify/functions/admin-dashboard`, `admin-activities`, `intent-submit`,
-              `contact-submit`, `live-data`.
+              Expected endpoints: `/.netlify/functions/admin-dashboard`, `admin-activities`, `onboarding-chat`,
+              `intent-submit`, `contact-submit`, `live-data`.
             </div>
           </div>
 
@@ -325,6 +325,16 @@
             <div class="admin-card__k">Recent Proof</div>
             <div class="admin-card__t" id="liveProofCount">—</div>
             <div class="admin-card__d">How many proof items were returned by the API.</div>
+          </div>
+          <div class="admin-card">
+            <div class="admin-card__k">Community Users</div>
+            <div class="admin-card__t" id="liveCommunityUsers">—</div>
+            <div class="admin-card__d">People captured through the onboarding assistant and related community forms.</div>
+          </div>
+          <div class="admin-card">
+            <div class="admin-card__k">User Questions</div>
+            <div class="admin-card__t" id="liveUserQuestions">—</div>
+            <div class="admin-card__d">Questions asked through the assistant that need follow-up or better content.</div>
           </div>
           <div class="admin-card">
             <div class="admin-card__k">Last Sync</div>
@@ -389,6 +399,41 @@
                   <div class="stackitem__meta mono">GET live-data</div>
                 </div>
                 <div class="stackitem__body">Proof signals, sprint completions, and activity summaries will appear here.</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section" id="users">
+        <div class="section__head">
+          <h2 class="section__title">Onboarding Users and Questions</h2>
+          <p class="section__sub">See each captured user with their answers, questions, and recent activity so follow-up can be specific.</p>
+        </div>
+
+        <div class="admin-grid admin-grid--2">
+          <div class="admin-card">
+            <div class="admin-card__k">Community Users</div>
+            <div class="stacklist" id="communityUsersList">
+              <div class="stackitem">
+                <div class="stackitem__top">
+                  <div class="stackitem__title">Waiting for data</div>
+                  <div class="stackitem__meta mono">GET onboarding-chat / admin-dashboard</div>
+                </div>
+                <div class="stackitem__body">Users captured by the bottom-sheet onboarding flow will appear here.</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="admin-card">
+            <div class="admin-card__k">Question Feed</div>
+            <div class="stacklist" id="userQuestionsList">
+              <div class="stackitem">
+                <div class="stackitem__top">
+                  <div class="stackitem__title">Waiting for data</div>
+                  <div class="stackitem__meta mono">assistant question history</div>
+                </div>
+                <div class="stackitem__body">Questions asked through the assistant will appear here for admin review.</div>
               </div>
             </div>
           </div>

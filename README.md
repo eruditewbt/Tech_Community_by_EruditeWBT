@@ -111,23 +111,48 @@ Also:
 
 ---
 
-## Courses
+## Learning And Repo Paths
 
-- Introduction to Computing & Programming (foundations track): `courses/intro_to_computing_and_programming/`
-- https://eruditewbt.github.io/Intro_to_Computing_and_Programming/
-- javascript course: https://github.com/eruditewbt/JAVASCRIPT
-- python course: https://github.com/eruditewbt/HACKCLUB
-- TYPESCRIPT: https://github.com/eruditewbt/TYPESCRIPT
+Foundations and hands-on starter lessons:
+
+- Introduction to Computing & Programming (repo): https://github.com/eruditewbt/Intro_to_Computing_and_Programming
+- Introduction to Computing & Programming (site): https://eruditewbt.github.io/Intro_to_Computing_and_Programming/
+- Covers device setup, terminals, Git, editors, IDEs, HTML, Markdown, CSS, and beginner coding flow
+
+Build paths:
+
+- `HACKCLUB` for Python, automation, data, and AI experimentation: https://github.com/eruditewbt/HACKCLUB
+- `JAVASCRIPT` for JavaScript systems, web work, and app logic: https://github.com/eruditewbt/JAVASCRIPT
+- `TYPESCRIPT` for typed frontend/backend systems and larger codebases: https://github.com/eruditewbt/TYPESCRIPT
+- `DARTANDFLUTTER` for cross-platform mobile and application work: https://github.com/eruditewbt/DARTANDFLUTTER
+- `VISUALSANDHCI` for visuals, interaction, HCI, and product-facing collaboration: https://github.com/eruditewbt/VISUALSANDHCI
+
+Collaboration note:
+
+- Some collaborative repos and active project lanes may require access approval.
+- If you want to join deeper builds or private collaboration spaces, send your email to `erudite-wbt@outlook.com` and state what repo, role, or project lane you want to join.
+
+Active community project directions include:
+
+- local dev agents
+- shared server app
+- shared server web
+- FileRanger
+- content and automation systems
+- educational systems
+- AI and agentic tooling
 
 ---
 
 ## Community
 
 - Discord: https://discord.gg/8e4bQNknA
+- Telegram: https://t.me/coding_session_by_eruditewbt
+- WhatsApp: https://chat.whatsapp.com/KJFAGqSsiNCAln0ZDJT6OO?mode=gi_c
 - Website (GitHub Pages): https://eruditewbt.github.io/Tech_Community_by_EruditeWBT/
-- Knowledge Hub: (Notion/GitBook)
 - YouTube: https://www.youtube.com/@eruditewbt
 - LinkedIn (Founder): https://www.linkedin.com/in/chemiosis-daniel-34542826a
+- X / Gbengs: https://x.com/gbenga_oje16648
 
 ---
 

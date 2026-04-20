@@ -1186,3 +1186,225 @@ a {
     transition: none;
   }
 }
+
+.assistantLauncher {
+  position: fixed;
+  right: 18px;
+  bottom: 18px;
+  z-index: 70;
+  border-radius: 999px;
+  border: 1px solid rgba(39, 208, 160, 0.28);
+  background: linear-gradient(180deg, rgba(39, 208, 160, 0.28), rgba(39, 208, 160, 0.12));
+  color: var(--ink);
+  padding: 12px 16px;
+  font: inherit;
+  font-weight: 800;
+  box-shadow: var(--shadow);
+}
+
+.assistantLauncher.is-hidden {
+  display: none;
+}
+
+.assistantSheet {
+  position: fixed;
+  left: 50%;
+  bottom: 0;
+  z-index: 80;
+  width: min(760px, calc(100vw - 16px));
+  max-height: min(82vh, 920px);
+  transform: translate(-50%, calc(100% + 30px));
+  transition: transform 220ms ease;
+  border-radius: 22px 22px 0 0;
+  border: 1px solid rgba(232, 236, 245, 0.12);
+  border-bottom: 0;
+  background: rgba(5, 8, 14, 0.98);
+  box-shadow: var(--shadow);
+  overflow: hidden;
+}
+
+.assistantSheet.is-open {
+  transform: translate(-50%, 0);
+}
+
+.assistantSheet__head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 14px 16px;
+  border-bottom: 1px solid rgba(232, 236, 245, 0.12);
+}
+
+.assistantSheet__eyebrow {
+  color: rgba(232, 236, 245, 0.72);
+  font-size: 11px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.assistantSheet__title {
+  font-size: 16px;
+  font-weight: 900;
+  letter-spacing: -0.02em;
+}
+
+.assistantSheet__icon {
+  border: 1px solid rgba(232, 236, 245, 0.12);
+  background: rgba(232, 236, 245, 0.04);
+  color: var(--ink);
+  border-radius: 12px;
+  padding: 8px 10px;
+  cursor: pointer;
+}
+
+.assistantSheet__meta {
+  padding: 12px 16px 0;
+}
+
+.assistantProgress {
+  font-size: 12px;
+  font-weight: 800;
+  color: rgba(232, 236, 245, 0.9);
+}
+
+.assistantMini {
+  margin-top: 6px;
+  color: var(--muted);
+  font-size: 13px;
+  line-height: 1.55;
+}
+
+.assistantLog {
+  padding: 16px;
+  display: grid;
+  gap: 10px;
+  max-height: 42vh;
+  overflow: auto;
+}
+
+.assistantBubble {
+  max-width: 92%;
+  border-radius: 18px;
+  border: 1px solid rgba(232, 236, 245, 0.12);
+  padding: 12px 14px;
+  font-size: 14px;
+  line-height: 1.6;
+}
+
+.assistantBubble--assistant {
+  background: rgba(232, 236, 245, 0.05);
+}
+
+.assistantBubble--user {
+  background: rgba(39, 208, 160, 0.12);
+  margin-left: auto;
+  border-color: rgba(39, 208, 160, 0.24);
+}
+
+.assistantBubble__label {
+  margin-bottom: 6px;
+  color: rgba(232, 236, 245, 0.72);
+  font-size: 11px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.assistantSuggestionList {
+  display: grid;
+  gap: 10px;
+}
+
+.assistantSuggestion {
+  display: grid;
+  gap: 6px;
+  padding: 12px 14px;
+  border-radius: 14px;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(232, 236, 245, 0.1);
+  text-decoration: none;
+}
+
+.assistantSuggestion__title {
+  font-weight: 800;
+}
+
+.assistantSuggestion__body {
+  color: var(--muted);
+  font-size: 13px;
+  line-height: 1.55;
+}
+
+.assistantForm {
+  padding: 16px;
+  border-top: 1px solid rgba(232, 236, 245, 0.12);
+  display: grid;
+  gap: 12px;
+}
+
+.assistantPrompt {
+  font-size: 14px;
+  font-weight: 700;
+  color: rgba(232, 236, 245, 0.92);
+}
+
+.assistantInput,
+.assistantTextarea {
+  width: 100%;
+  border-radius: 14px;
+  border: 1px solid rgba(232, 236, 245, 0.14);
+  background: rgba(7, 10, 15, 0.62);
+  color: rgba(232, 236, 245, 0.92);
+  padding: 12px 12px;
+  font: inherit;
+}
+
+.assistantTextarea {
+  min-height: 120px;
+  resize: vertical;
+}
+
+.assistantChoices {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.assistantChoice {
+  border-radius: 999px;
+  border: 1px solid rgba(232, 236, 245, 0.14);
+  background: rgba(232, 236, 245, 0.05);
+  color: var(--ink);
+  padding: 10px 14px;
+  font: inherit;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.assistantChoice:hover,
+.assistantSuggestion:hover,
+.assistantLauncher:hover,
+.assistantSheet__icon:hover {
+  filter: brightness(1.08);
+}
+
+.assistantForm__actions {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+@media (max-width: 720px) {
+  .assistantSheet {
+    width: 100vw;
+    border-radius: 18px 18px 0 0;
+  }
+
+  .assistantLog {
+    max-height: 38vh;
+  }
+
+  .assistantBubble {
+    max-width: 100%;
+  }
+}

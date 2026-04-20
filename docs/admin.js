@@ -13,16 +13,29 @@
   const liveCurrentSprint = document.getElementById("liveCurrentSprint");
   const liveIdeasInVoting = document.getElementById("liveIdeasInVoting");
   const liveProofCount = document.getElementById("liveProofCount");
+  const liveCommunityUsers = document.getElementById("liveCommunityUsers");
+  const liveUserQuestions = document.getElementById("liveUserQuestions");
   const liveLastSync = document.getElementById("liveLastSync");
 
   const activitiesList = document.getElementById("activitiesList");
   const intentsList = document.getElementById("intentsList");
   const contactsList = document.getElementById("contactsList");
   const proofSignalsList = document.getElementById("proofSignalsList");
+  const communityUsersList = document.getElementById("communityUsersList");
+  const userQuestionsList = document.getElementById("userQuestionsList");
 
   const KEY_BASE = "techCommunityAdminApiBase";
   const KEY_TOKEN = "techCommunityAdminToken";
   const DEFAULT_BASE = "/api";
+
+  function escapeHtml(value) {
+    return String(value || "")
+      .replace(/&/g, "&amp;")
+      .replace(/</g, "&lt;")
+      .replace(/>/g, "&gt;")
+      .replace(/\"/g, "&quot;")
+      .replace(/'/g, "&#39;");
+  }
 
   function setStatus(text, ok) {
     if (statusText) statusText.textContent = text;
@@ -54,7 +67,7 @@
     const candidates = [getBase(), "/api", "/.netlify/functions"]
       .map((value) => String(value || "").trim())
       .filter(Boolean)
-      .map((value, index, arr) => value.replace(/\/+$/, ""))
+      .map((value) => value.replace(/\/+$/, ""))
       .filter((value, index, arr) => arr.indexOf(value) === index);
 
     let lastError = null;
@@ -159,13 +172,56 @@
     `;
   }
 
-  function escapeHtml(value) {
-    return String(value || "")
-      .replace(/&/g, "&amp;")
-      .replace(/</g, "&lt;")
-      .replace(/>/g, "&gt;")
-      .replace(/\"/g, "&quot;")
-      .replace(/'/g, "&#39;");
+  function renderCommunityUser(item) {
+    const answers = Array.isArray(item.answers) ? item.answers : [];
+    const questions = Array.isArray(item.questions) ? item.questions : [];
+    const recentActivities = Array.isArray(item.recentActivities) ? item.recentActivities : [];
+    return `
+      <div class="stackitem">
+        <div class="stackitem__top">
+          <div class="stackitem__title">${escapeHtml(item.name || item.email || item.domain || "Community user")}</div>
+          <div class="stackitem__meta mono">${escapeHtml(item.updated_at || item.created_at || "")}</div>
+        </div>
+        <div class="stackitem__body">
+          Domain: ${escapeHtml(item.domain || "—")}<br/>
+          Email: ${escapeHtml(item.email || "—")}<br/>
+          Goal: ${escapeHtml(item.current_goal || "—")}<br/>
+          Level: ${escapeHtml(item.skill_level || "—")}<br/>
+          Repo: ${escapeHtml(item.repo_interest || "—")}<br/>
+          Session: <span class="mono">${escapeHtml(item.session_id || "—")}</span><br/>
+          Answers captured: ${answers.length}<br/>
+          Questions asked: ${questions.length}<br/>
+          Recent activity events: ${recentActivities.length}
+        </div>
+      </div>
+    `;
+  }
+
+  function renderUserQuestion(item) {
+    const latestQuestion = Array.isArray(item.questions) && item.questions.length ? item.questions[0] : null;
+    if (!latestQuestion) {
+      return `
+        <div class="stackitem">
+          <div class="stackitem__top">
+            <div class="stackitem__title">${escapeHtml(item.name || item.email || "Community user")}</div>
+            <div class="stackitem__meta mono">no question yet</div>
+          </div>
+          <div class="stackitem__body">This user has onboarding data but has not asked a free-text question yet.</div>
+        </div>
+      `;
+    }
+    return `
+      <div class="stackitem">
+        <div class="stackitem__top">
+          <div class="stackitem__title">${escapeHtml(item.name || item.email || "Community user")}</div>
+          <div class="stackitem__meta mono">${escapeHtml(latestQuestion.created_at || "")}</div>
+        </div>
+        <div class="stackitem__body">
+          Question: ${escapeHtml(latestQuestion.question_text || "—")}<br/>
+          Suggested reply: ${escapeHtml(latestQuestion.answer_summary || "—")}
+        </div>
+      </div>
+    `;
   }
 
   async function loadDashboard() {
@@ -185,47 +241,49 @@
       }
 
       const stats = dashboard.stats || {};
+      const counts = stats.dbCounts || activitiesPayload.counts || {};
       if (liveActiveProjects) liveActiveProjects.textContent = stats.activeProjects ?? "—";
       if (liveOpenRoles) liveOpenRoles.textContent = stats.openRoles ?? "—";
       if (liveCurrentSprint) liveCurrentSprint.textContent = stats.currentSprint ?? "—";
       if (liveIdeasInVoting) liveIdeasInVoting.textContent = stats.ideasInVoting ?? "—";
       if (liveProofCount) liveProofCount.textContent = stats.proofCount ?? "—";
-      if (liveLastSync) liveLastSync.textContent = stats.lastSync ? new Date(stats.lastSync).toLocaleString() : "—";
+      if (liveCommunityUsers) liveCommunityUsers.textContent = counts.communityUserCount ?? "—";
+      if (liveUserQuestions) liveUserQuestions.textContent = counts.userQuestionCount ?? "—";
+      if (liveLastSync) liveLastSync.textContent = stats.lastSync || new Date().toISOString();
 
       if (snapshotText) {
-        snapshotText.textContent =
-          `Loaded ${stats.activeProjects ?? 0} active projects, ${stats.openRoles ?? 0} open roles, ` +
-          `${stats.proofCount ?? 0} proof signals, and recent user activity from the API layer.`;
+        snapshotText.innerHTML = `
+          Active projects: <strong>${escapeHtml(stats.activeProjects)}</strong><br/>
+          Open roles: <strong>${escapeHtml(stats.openRoles)}</strong><br/>
+          Current sprint: <strong>${escapeHtml(stats.currentSprint)}</strong><br/>
+          Ideas in voting: <strong>${escapeHtml(stats.ideasInVoting)}</strong><br/>
+          Community users: <strong>${escapeHtml(counts.communityUserCount)}</strong><br/>
+          Assistant questions: <strong>${escapeHtml(counts.userQuestionCount)}</strong>
+        `;
       }
 
-      renderItems(activitiesList, activitiesPayload.activities || dashboard.activities, renderActivity, "No recent activities");
-      renderItems(intentsList, activitiesPayload.intents || dashboard.intents, renderIntent, "No recent intents");
-      renderItems(contactsList, activitiesPayload.contacts || dashboard.contacts, renderContact, "No recent contacts");
-      renderItems(proofSignalsList, dashboard.proofFeed || [], renderProof, "No proof signals");
+      renderItems(activitiesList, activitiesPayload.activities || dashboard.activities || [], renderActivity, "No activities yet");
+      renderItems(intentsList, dashboard.intents || activitiesPayload.intents || [], renderIntent, "No intents yet");
+      renderItems(contactsList, dashboard.contacts || activitiesPayload.contacts || [], renderContact, "No contact messages yet");
+      renderItems(proofSignalsList, dashboard.proofFeed || [], renderProof, "No proof signals yet");
 
-      setStatus("Connected. Admin data loaded successfully.", true);
+      const communityUsers = dashboard.communityUsers || activitiesPayload.communityUsers || [];
+      renderItems(communityUsersList, communityUsers, renderCommunityUser, "No community users yet");
+      renderItems(userQuestionsList, communityUsers.filter((item) => Array.isArray(item.questions) && item.questions.length), renderUserQuestion, "No user questions yet");
+
+      setStatus("Connected. Dashboard is live.", true);
     } catch (err) {
-      setStatus(`Connection failed. ${err.message || ""}`.trim(), false);
-      if (snapshotText) {
-        snapshotText.textContent = "Could not load admin data. Check the API base path, token, and deployed functions.";
-      }
+      setStatus(err.message || "Connection failed.", false);
     }
   }
 
   if (apiBaseEl) apiBaseEl.value = sessionStorage.getItem(KEY_BASE) || DEFAULT_BASE;
   if (tokenEl) tokenEl.value = sessionStorage.getItem(KEY_TOKEN) || "";
 
-  if (connectBtn) connectBtn.addEventListener("click", loadDashboard);
-  if (refreshBtn) refreshBtn.addEventListener("click", loadDashboard);
-  if (clearBtn) {
-    clearBtn.addEventListener("click", () => {
-      clearConfig();
-      setStatus("Disconnected. Enter admin token to load data.", false);
-      if (snapshotText) snapshotText.textContent = "No data loaded yet. Connect with a token and the dashboard will populate automatically.";
-    });
-  }
-
-  if (sessionStorage.getItem(KEY_TOKEN)) {
-    loadDashboard();
-  }
+  connectBtn && connectBtn.addEventListener("click", loadDashboard);
+  refreshBtn && refreshBtn.addEventListener("click", loadDashboard);
+  clearBtn && clearBtn.addEventListener("click", () => {
+    clearConfig();
+    setStatus("Disconnected. Enter admin token to load data.", false);
+  });
 })();
