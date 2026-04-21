@@ -26,7 +26,8 @@
 
   const KEY_BASE = "techCommunityAdminApiBase";
   const KEY_TOKEN = "techCommunityAdminToken";
-  const DEFAULT_BASE = "/api";
+  const CANONICAL_API_BASE = "https://eruditewbt.netlify.app/api";
+  const DEFAULT_BASE = CANONICAL_API_BASE;
 
   function escapeHtml(value) {
     return String(value || "")
@@ -44,6 +45,18 @@
 
   function getBase() {
     return (apiBaseEl && apiBaseEl.value.trim()) || sessionStorage.getItem(KEY_BASE) || DEFAULT_BASE;
+  }
+
+  function resolveApiBases() {
+    const host = String(location.hostname || "").toLowerCase();
+    const origin = String(location.origin || "").replace(/\/+$/, "");
+    const isNetlifyHost = host.endsWith(".netlify.app");
+    const localCandidates = isNetlifyHost ? [`${origin}/api`, `${origin}/.netlify/functions`] : [];
+    return [getBase(), CANONICAL_API_BASE, ...localCandidates]
+      .map((value) => String(value || "").trim())
+      .filter(Boolean)
+      .map((value) => value.replace(/\/+$/, ""))
+      .filter((value, index, arr) => arr.indexOf(value) === index);
   }
 
   function getToken() {
@@ -64,11 +77,7 @@
 
   async function apiFetch(path) {
     const token = getToken();
-    const candidates = [getBase(), "/api", "/.netlify/functions"]
-      .map((value) => String(value || "").trim())
-      .filter(Boolean)
-      .map((value) => value.replace(/\/+$/, ""))
-      .filter((value, index, arr) => arr.indexOf(value) === index);
+    const candidates = resolveApiBases();
 
     let lastError = null;
     for (const base of candidates) {

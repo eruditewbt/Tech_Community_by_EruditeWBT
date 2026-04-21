@@ -78,11 +78,12 @@
       <div class="stage">
         <div class="stage__bar">
           <div class="stage__hint">
-            Tip: search a node, click it to pin its ego-network. Drag nodes. Scroll to zoom.
+            Tip: search a node, hover to read its name, click it to pin its ego-network. Drag nodes. Scroll to zoom.
           </div>
           <div class="stage__hint" id="counts">Loading…</div>
         </div>
         <canvas id="graph" aria-label="Civilization graph visualization"></canvas>
+        <div id="graphTooltip" class="graphTooltip" hidden></div>
         <div class="legend">
           <span class="chip"><span class="sw" style="background: #27d0a0"></span>Occupation</span>
           <span class="chip"><span class="sw" style="background: #f1c66a"></span>Industry</span>

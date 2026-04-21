@@ -2,6 +2,7 @@
   const modal = document.getElementById("modal");
   const modalImg = document.getElementById("modalImg");
   const toast = document.getElementById("toast");
+  const CANONICAL_API_BASE = "https://eruditewbt.netlify.app/api";
   const configuredApiBase =
     sessionStorage.getItem("tech-community-api-base") || window.TECH_COMMUNITY_API_BASE || "";
   const liveIds = {
@@ -11,14 +12,26 @@
     ideasInVoting: document.getElementById("liveIdeasInVoting"),
   };
   const proofFeed = document.getElementById("proofFeed");
+  const nextActivitiesFeed = document.getElementById("nextActivitiesFeed");
+  const blogPostsFeed = document.getElementById("blogPostsFeed");
+  const deployedProductsFeed = document.getElementById("deployedProductsFeed");
   const intentForm = document.getElementById("intentForm");
   const contactForm = document.getElementById("contactForm");
   const intentFormStatus = document.getElementById("intentFormStatus");
   const contactFormStatus = document.getElementById("contactFormStatus");
-  const apiBases = [configuredApiBase, "/.netlify/functions", "/api"]
-    .map((base) => String(base || "").trim())
-    .filter(Boolean)
-    .map((base) => base.replace(/\/$/, ""));
+  const apiBases = resolveApiBases();
+
+  function resolveApiBases() {
+    const host = String(location.hostname || "").toLowerCase();
+    const origin = String(location.origin || "").replace(/\/$/, "");
+    const isNetlifyHost = host.endsWith(".netlify.app");
+    const localCandidates = isNetlifyHost ? [`${origin}/api`, `${origin}/.netlify/functions`] : [];
+    return [configuredApiBase, CANONICAL_API_BASE, ...localCandidates]
+      .map((base) => String(base || "").trim())
+      .filter(Boolean)
+      .map((base) => base.replace(/\/$/, ""))
+      .filter((base, index, arr) => arr.indexOf(base) === index);
+  }
 
   function readForm(form) {
     const data = {};
@@ -32,7 +45,12 @@
     for (const base of apiBases) {
       try {
         const res = await fetch(`${base}/${path}`, options);
-        if (res.ok) return res;
+        if (res.ok) {
+          try {
+            sessionStorage.setItem("tech-community-api-base", base);
+          } catch (_) {}
+          return res;
+        }
         lastError = new Error(`HTTP ${res.status}`);
       } catch (err) {
         lastError = err;
@@ -146,6 +164,13 @@
     if (e.key === "Escape" && modal && modal.open) modal.close();
   });
 
+  function renderLink(href, label = "Open") {
+    if (!href) return "";
+    const external = /^https?:\/\//i.test(String(href || ""));
+    const attrs = external ? ' target="_blank" rel="noreferrer"' : "";
+    return `<div class="card__actions" style="margin-top:12px"><a class="miniBtn" href="${href}"${attrs}>${label}</a></div>`;
+  }
+
   function renderFeedCard(item, variant) {
     if (variant === "roadmap") {
       return `
@@ -154,6 +179,7 @@
           <div class="roadmap__t">${item.title || "Untitled update"}</div>
           <p class="p">${item.description || ""}</p>
           <div class="step__d">${item.meta || ""}</div>
+          ${renderLink(item.href, item.cta || "Open")}
         </article>
       `;
     }
@@ -164,13 +190,30 @@
         <div class="feed__t">${item.title || "Untitled update"}</div>
         <div class="feed__d">${item.description || ""}</div>
         <div class="feed__meta">${item.meta || ""}</div>
+        ${renderLink(item.href, item.cta || "Open")}
       </div>
+    `;
+  }
+
+  function renderInfoCard(item) {
+    return `
+      <article class="roadmap__card">
+        <div class="roadmap__k">${item.label || "Update"}</div>
+        <div class="roadmap__t">${item.title || "Untitled item"}</div>
+        <p class="p">${item.description || ""}</p>
+        <div class="step__d">${item.meta || ""}</div>
+        ${renderLink(item.href, item.cta || "Open")}
+      </article>
     `;
   }
 
   (async function loadLiveData() {
     const shouldLoad =
-      Object.values(liveIds).some(Boolean) || Boolean(proofFeed);
+      Object.values(liveIds).some(Boolean) ||
+      Boolean(proofFeed) ||
+      Boolean(nextActivitiesFeed) ||
+      Boolean(blogPostsFeed) ||
+      Boolean(deployedProductsFeed);
     if (!shouldLoad) return;
 
     try {
@@ -192,6 +235,18 @@
       if (proofFeed && Array.isArray(data.proofFeed) && data.proofFeed.length) {
         const variant = proofFeed.classList.contains("roadmap") ? "roadmap" : "feed";
         proofFeed.innerHTML = data.proofFeed.map((item) => renderFeedCard(item, variant)).join("");
+      }
+
+      if (nextActivitiesFeed && Array.isArray(data.nextActivities) && data.nextActivities.length) {
+        nextActivitiesFeed.innerHTML = data.nextActivities.map((item) => renderInfoCard(item)).join("");
+      }
+
+      if (blogPostsFeed && Array.isArray(data.blogPosts) && data.blogPosts.length) {
+        blogPostsFeed.innerHTML = data.blogPosts.map((item) => renderInfoCard(item)).join("");
+      }
+
+      if (deployedProductsFeed && Array.isArray(data.deployedProducts) && data.deployedProducts.length) {
+        deployedProductsFeed.innerHTML = data.deployedProducts.map((item) => renderInfoCard(item)).join("");
       }
     } catch (_) {
       // Keep the static fallback content already in the HTML.

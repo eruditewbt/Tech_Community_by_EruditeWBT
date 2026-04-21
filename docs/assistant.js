@@ -62,10 +62,22 @@
 
   const STORAGE_KEY = "techCommunityOnboardingState";
   const completedState = new Set(["completed", "assistant"]);
-  const apiBases = [window.TECH_COMMUNITY_API_BASE || "", "/.netlify/functions", "/api"]
-    .map((item) => String(item || "").trim())
-    .filter(Boolean)
-    .map((item) => item.replace(/\/$/, ""));
+  const CANONICAL_API_BASE = "https://eruditewbt.netlify.app/api";
+  const configuredApiBase =
+    sessionStorage.getItem("tech-community-api-base") || window.TECH_COMMUNITY_API_BASE || "";
+  const apiBases = resolveApiBases();
+
+  function resolveApiBases() {
+    const host = String(location.hostname || "").toLowerCase();
+    const origin = String(location.origin || "").replace(/\/$/, "");
+    const isNetlifyHost = host.endsWith(".netlify.app");
+    const localCandidates = isNetlifyHost ? [`${origin}/api`, `${origin}/.netlify/functions`] : [];
+    return [configuredApiBase, CANONICAL_API_BASE, ...localCandidates]
+      .map((item) => String(item || "").trim())
+      .filter(Boolean)
+      .map((item) => item.replace(/\/$/, ""))
+      .filter((item, index, arr) => arr.indexOf(item) === index);
+  }
 
   function getSessionId() {
     const key = "techCommunitySessionId";
@@ -139,7 +151,12 @@
     for (const base of apiBases) {
       try {
         const res = await fetch(`${base}/${path}`, options);
-        if (res.ok) return res;
+        if (res.ok) {
+          try {
+            sessionStorage.setItem("tech-community-api-base", base);
+          } catch (_) {}
+          return res;
+        }
         lastError = new Error(`HTTP ${res.status}`);
       } catch (err) {
         lastError = err;

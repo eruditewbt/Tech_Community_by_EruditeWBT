@@ -12,6 +12,7 @@
   const randomEl = document.getElementById("random");
   const copyLinkEl = document.getElementById("copyLink");
   const pathEl = document.getElementById("path");
+  const tooltipEl = document.getElementById("graphTooltip");
 
   const COLORS = {
     occupation: "#27d0a0",
@@ -47,6 +48,7 @@
   let tick = 0;
   let dragging = null;
   let dragOffset = { x: 0, y: 0 };
+  let hoveredNodeId = null;
 
   function resize() {
     const rect = canvas.getBoundingClientRect();
@@ -330,6 +332,31 @@
     if (countsEl) {
       countsEl.textContent = `${vnodes.length} nodes shown · ${vlinks.length} links shown`;
     }
+  }
+
+  function showTooltip(n, mx, my) {
+    if (!tooltipEl || !n) return;
+    const title = escapeHtml(n.label || n.id || "Node");
+    const meta = [n.type || "unknown", n.code || ""].filter(Boolean).map(escapeHtml).join(" · ");
+    const body = escapeHtml(n.description || "Click to inspect this node and generate a path if it is an occupation.");
+    tooltipEl.innerHTML = `
+      <div class="graphTooltip__title">${title}</div>
+      <div class="graphTooltip__meta">${meta}</div>
+      <div class="graphTooltip__body">${body}</div>
+    `;
+    tooltipEl.hidden = false;
+    const pad = 16;
+    const rect = canvas.getBoundingClientRect();
+    const width = 280;
+    const x = Math.min(Math.max(pad, mx + 18), rect.width - width - pad);
+    const y = Math.min(Math.max(pad, my + 18), rect.height - 120);
+    tooltipEl.style.left = `${x}px`;
+    tooltipEl.style.top = `${y}px`;
+  }
+
+  function hideTooltip() {
+    if (!tooltipEl) return;
+    tooltipEl.hidden = true;
   }
 
   function schedule() {
@@ -909,12 +936,23 @@
       dragging.y = w.y + dragOffset.y;
       dragging.vx = 0;
       dragging.vy = 0;
+      hideTooltip();
       return;
     }
     if (isPanning) {
       panX = panStart.ox + (mx - panStart.x);
       panY = panStart.oy + (my - panStart.y);
+      hideTooltip();
       return;
+    }
+    const picked = pickNode(mx, my);
+    hoveredNodeId = picked ? picked.id : null;
+    if (picked) {
+      canvas.style.cursor = "pointer";
+      showTooltip(picked, mx, my);
+    } else {
+      canvas.style.cursor = "default";
+      hideTooltip();
     }
   });
 
@@ -924,6 +962,12 @@
       return;
     }
     if (isPanning) isPanning = false;
+  });
+
+  canvas.addEventListener("mouseleave", () => {
+    hoveredNodeId = null;
+    canvas.style.cursor = "default";
+    hideTooltip();
   });
 
   canvas.addEventListener("click", (e) => {

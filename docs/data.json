@@ -21,6 +21,108 @@
       "title": "Three starter project tracks seeded",
       "description": "The platform now has beginner, cross-field, and advanced technical directions to create visible movement immediately.",
       "meta": "Next action: fill roles, enter sprint, and publish proof updates weekly."
+    },
+    {
+      "label": "Deployed Product",
+      "title": "Read And Analyze is already live for document workflows",
+      "description": "Students and professionals can already review documents, extract text, generate questions and notes, and use AI chat in a cleaner interface.",
+      "meta": "Live: https://pdf-reader-77ef58.web.app/"
+    },
+    {
+      "label": "Deployed Product",
+      "title": "Examination Manager and Task Manager are ready for review",
+      "description": "The community already has deployable education and productivity products people can test, critique, and improve together.",
+      "meta": "Live: examination-manager.web.app and task-master-d0262.web.app"
+    }
+  ],
+  "nextActivities": [
+    {
+      "label": "Decision Window",
+      "title": "Run the role-based poll for upcoming calls",
+      "description": "A poll will be used to decide when each community group should meet so treatment becomes more specific instead of too broad.",
+      "meta": "Focus groups: Domain Experts, Engineers, Designers / Operators",
+      "href": "./calls-and-polls.html"
+    },
+    {
+      "label": "Community Calls",
+      "title": "Schedule domain-specific calls by role",
+      "description": "Separate calls will help domain experts, developers, designers, and operators get more relevant discussions and clearer direction.",
+      "meta": "Priority roles: domain experts, engineers, designers, operators",
+      "href": "./calls-and-polls.html"
+    },
+    {
+      "label": "Video Planning",
+      "title": "Decide which hands-on video to create first",
+      "description": "The next public media push should choose the most important first video: intro to community, intro to computing, system design, tech for your field, monetization, AI automation, or collaboration systems.",
+      "meta": "Goal: create a practical first-watch path for new members",
+      "href": "./calls-and-polls.html#video-priority"
+    },
+    {
+      "label": "Live Build",
+      "title": "Turn the next activity into a visible live system",
+      "description": "Each chosen activity should be built in public so members can see the system forming, not just hear theory about it.",
+      "meta": "Outcome: more trust, more proof, more participation",
+      "href": "./progress.html"
+    }
+  ],
+  "blogPosts": [
+    {
+      "label": "Starter Guide",
+      "title": "How to find your path in the community without getting overwhelmed",
+      "description": "A plain-language guide for beginners and domain experts on how to choose a role, a repo, and a first visible action.",
+      "meta": "Best for: new members, career explorers, multidisciplinary joiners",
+      "href": "./blog-pathfinding.html"
+    },
+    {
+      "label": "Field Guide",
+      "title": "How to use technology to strengthen the field you already belong to",
+      "description": "A practical explanation for healthcare, education, business, law, design, and other non-software fields on where tech creates leverage.",
+      "meta": "Best for: domain experts and non-tech professionals",
+      "href": "./blog-tech-in-your-field.html"
+    },
+    {
+      "label": "Build Guide",
+      "title": "How to learn effectively, build proof, and move toward monetization",
+      "description": "A post about turning scattered learning into a repeatable loop: learn, build, document, publish, and use your work to create opportunity.",
+      "meta": "Best for: builders, freelancers, founders, and serious learners",
+      "href": "./blog-learning-and-proof.html"
+    },
+    {
+      "label": "AI Guide",
+      "title": "How AI and automation can help you do more with less manual work",
+      "description": "A practical post on using machines to automate repeated work, support decision-making, and build stronger systems across fields.",
+      "meta": "Best for: operations, analytics, automation, and product-thinking",
+      "href": "./blog-ai-and-automation.html"
+    }
+  ],
+  "deployedProducts": [
+    {
+      "label": "APP + WEB",
+      "title": "Read And Analyze",
+      "description": "Read documents, process content, extract text, generate questions and notes, and use AI chat with a stronger UI.",
+      "meta": "Review it and send improvement ideas back into the community.",
+      "href": "https://pdf-reader-77ef58.web.app/"
+    },
+    {
+      "label": "WEB",
+      "title": "Examination Manager",
+      "description": "Take CBT exams, prepare for tests, generate questions, and shape it into an app if the community demands it.",
+      "meta": "Current deployment is web-first, app version can follow.",
+      "href": "https://examination-manager.web.app"
+    },
+    {
+      "label": "APP + WEB",
+      "title": "Task Manager",
+      "description": "Manage activities, start, stop, pause, continue later, and share task flows for better productivity.",
+      "meta": "Use the Firebase app or the Netlify surface depending on what you want to test.",
+      "href": "https://task-master-d0262.web.app"
+    },
+    {
+      "label": "LIVE SURFACE",
+      "title": "EruditeWBT Netlify app surface",
+      "description": "Open the broader live product surface and use it as an entry point for community testing.",
+      "meta": "This is a good route for public demos and quick validation.",
+      "href": "https://eruditewbt.netlify.app/"
     }
   ]
 }

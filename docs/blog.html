@@ -1,0 +1,91 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Helpful Blog Posts | EruditeWBT Tech Community</title>
+    <meta name="description" content="Helpful blog-style posts for understanding paths, tech in your field, learning effectively, monetization, AI, and collaboration." />
+    <link rel="icon" href="assets/eruditewbt_logo.jpg" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;600;700&family=IBM+Plex+Serif:wght@400;600&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <a class="skip" href="#main">Skip to content</a>
+    <header class="top">
+      <div class="top__inner">
+        <div class="brand">
+          <img class="brand__logo" src="assets/eruditewbt_logo.jpg" alt="EruditeWBT logo" />
+          <div class="brand__text">
+            <div class="brand__name">Helpful Posts</div>
+            <div class="brand__sub">Guidance that helps people enter, choose, and act</div>
+          </div>
+        </div>
+        <nav class="nav" aria-label="Primary">
+          <a class="nav__link" href="./">Home</a>
+          <a class="nav__link" href="./learn.html">Learn</a>
+          <a class="nav__link" href="./activities.html">Activities</a>
+          <a class="nav__link" href="./join.html">Join</a>
+        </nav>
+      </div>
+    </header>
+    <main id="main" class="main">
+      <section class="hero hero--alt">
+        <div class="hero__bg" aria-hidden="true"></div>
+        <div class="hero__grid">
+          <div class="hero__copy">
+            <p class="eyebrow">Knowledge layer</p>
+            <h1 class="hero__title">Helpful posts should answer real user confusion before it becomes friction.</h1>
+            <p class="hero__lede">These blog-style posts are meant to guide members across fields: choosing a path, using tech in their field, learning effectively, monetizing skills, and using AI/automation well.</p>
+            <div class="cta">
+              <a class="btn btn--primary" href="./learn.html">Open learning paths</a>
+              <a class="btn btn--ghost" href="./graph.html">Explore the graph</a>
+              <a class="btn btn--quiet" href="./join.html">Ask the assistant</a>
+            </div>
+          </div>
+          <div class="hero__panel">
+            <div class="panel">
+              <div class="panel__head">
+                <div class="panel__title">Best use</div>
+                <div class="panel__hint">Reduce onboarding friction</div>
+              </div>
+              <div style="padding:16px">
+                <p class="p">Good posts do not just explain things. They help a user decide what to do next.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="section__head">
+          <h2 class="section__title">Blog-style starter posts</h2>
+          <p class="section__sub">These should become real public posts, videos, or linked guidance pages over time.</p>
+        </div>
+        <div class="roadmap" id="blogPostsFeed">
+          <article class="roadmap__card">
+            <div class="roadmap__k">Loading</div>
+            <div class="roadmap__t">Loading helpful posts…</div>
+            <p class="p">If this remains here, check <code>docs/data.json</code>.</p>
+          </article>
+        </div>
+      </section>
+
+      <footer class="foot">
+        <div class="foot__inner">
+          <div class="foot__left">
+            <div class="foot__brand"><img class="foot__logo" src="assets/eruditewbt_logo.jpg" alt="" /><div><div class="foot__title">EruditeWBT Tech Community</div><div class="foot__sub">Good guidance should lead to action.</div></div></div>
+          </div>
+          <div class="foot__right">
+            <a class="foot__link" href="./activities.html">Activities</a>
+            <a class="foot__link" href="./learn.html">Learn</a>
+            <a class="foot__link" href="./join.html">Join</a>
+          </div>
+        </div>
+      </footer>
+    </main>
+    <script src="app.js"></script>
+    <script src="assistant.js"></script>
+  </body>
+</html>
