@@ -48,6 +48,8 @@
         "TYPESCRIPT",
         "DARTANDFLUTTER",
         "VISUALSANDHCI",
+        "GO / LEARNGO",
+        "Church Management",
         "Not sure yet",
       ],
     },
@@ -189,6 +191,7 @@
         <div class="assistantMini" id="assistantMini"></div>
       </div>
       <div class="assistantLog" id="assistantLog"></div>
+      <div class="assistantQuickActions" id="assistantQuickActions"></div>
       <form class="assistantForm" id="assistantForm">
         <label class="assistantPrompt" id="assistantPrompt" for="assistantInput"></label>
         <div id="assistantChoiceWrap" class="assistantChoices"></div>
@@ -213,6 +216,7 @@
   const promptEl = sheet.querySelector("#assistantPrompt");
   const progressEl = sheet.querySelector("#assistantProgress");
   const miniEl = sheet.querySelector("#assistantMini");
+  const quickActionsEl = sheet.querySelector("#assistantQuickActions");
   const formEl = sheet.querySelector("#assistantForm");
   const inputEl = sheet.querySelector("#assistantInput");
   const textEl = sheet.querySelector("#assistantTextarea");
@@ -274,6 +278,56 @@
     logEl.scrollTop = logEl.scrollHeight;
   }
 
+  function buildWhatsAppMessage() {
+    const answers = state.answers || {};
+    const latestUserQuestion = state.messages
+      .slice()
+      .reverse()
+      .find((item) => item && item.role === "user");
+    const lines = [
+      "Hello Tech Community team,",
+      "",
+      "I want to join and start acting quickly.",
+      `Name: ${answers.name || (state.user && state.user.name) || ""}`,
+      `Email: ${answers.email || (state.user && state.user.email) || ""}`,
+      `Field / Domain: ${answers.domain || (state.user && state.user.domain) || ""}`,
+      `Current goal: ${answers.goal || (state.user && state.user.goal) || ""}`,
+      `Skill level: ${answers.skill_level || (state.user && state.user.skillLevel) || ""}`,
+      `Repo interest: ${answers.repo_interest || (state.user && state.user.repoInterest) || ""}`,
+      `What I want help with: ${answers.question || (latestUserQuestion && latestUserQuestion.text) || ""}`,
+    ];
+    if (state.repoSummary && Array.isArray(state.repoSummary.areas) && state.repoSummary.areas.length) {
+      lines.push(`Relevant repo areas: ${state.repoSummary.areas.join(", ")}`);
+    }
+    if (state.repoSummary && Array.isArray(state.repoSummary.learnFrom) && state.repoSummary.learnFrom.length) {
+      lines.push(`Suggested learning references: ${state.repoSummary.learnFrom.join("; ")}`);
+    }
+    if (state.projectFocus && Array.isArray(state.projectFocus.areas) && state.projectFocus.areas.length) {
+      lines.push(`Relevant project lane: ${state.projectFocus.title}`);
+      lines.push(`Project build areas: ${state.projectFocus.areas.join(", ")}`);
+    }
+    return lines.join("\n").trim();
+  }
+
+  function renderQuickActions() {
+    const hasProfile = Boolean((state.answers && state.answers.email) || (state.user && state.user.email));
+    const whatsappText = state.handoff && state.handoff.text ? state.handoff.text : buildWhatsAppMessage();
+    const whatsappCompose =
+      (state.handoff && state.handoff.genericWhatsAppHref) ||
+      `https://wa.me/?text=${encodeURIComponent(whatsappText)}`;
+    const whatsappGroup =
+      (state.handoff && state.handoff.groupHref) ||
+      "https://chat.whatsapp.com/KJFAGqSsiNCAln0ZDJT6OO?mode=gi_c";
+    const emailBody = encodeURIComponent(whatsappText);
+    const emailHref = `mailto:erudite-wbt@outlook.com?subject=${encodeURIComponent("Tech Community repo access / onboarding")}&body=${emailBody}`;
+    quickActionsEl.innerHTML = `
+      <button type="button" class="assistantActionBtn" data-assistant-action="copy-whatsapp">Copy WhatsApp summary</button>
+      <a class="assistantActionBtn" href="${escapeHtml(whatsappCompose)}" target="_blank" rel="noreferrer">Open WhatsApp message</a>
+      <a class="assistantActionBtn" href="${escapeHtml(whatsappGroup)}" target="_blank" rel="noreferrer">Open WhatsApp group</a>
+      <a class="assistantActionBtn" href="${escapeHtml(emailHref)}">${hasProfile ? "Email for repo access" : "Email to request access"}</a>
+    `;
+  }
+
   function renderForm() {
     const step = currentStep();
     const answeredCount = Object.keys(state.answers || {}).length;
@@ -315,6 +369,7 @@
 
   function render() {
     renderMessages();
+    renderQuickActions();
     renderForm();
   }
 
@@ -359,6 +414,15 @@
       if (data.user) {
         state.user = data.user;
       }
+      if (data.repoSummary) {
+        state.repoSummary = data.repoSummary;
+      }
+      if (data.projectFocus) {
+        state.projectFocus = data.projectFocus;
+      }
+      if (data.handoff) {
+        state.handoff = data.handoff;
+      }
       if (data.reply) addMessage("assistant", data.reply);
       if (Array.isArray(data.suggestions)) addSuggestions(data.suggestions);
       if (data.nextStep && data.nextStep.key) {
@@ -378,7 +442,7 @@
     } catch (err) {
       addMessage(
         "assistant",
-        "The live assistant could not save that right now. Please join Discord and send your domain, email, current goal, and question there so the team can still route you quickly."
+        "The live assistant could not save that right now. Please copy your summary and continue in the WhatsApp group or by email so the team can still route you quickly and add collaborator access where needed."
       );
       state.currentStepKey = nextUnansweredKey();
       saveState();
@@ -404,6 +468,13 @@
     if (kind === "later") {
       state.dismissed = true;
       closeSheet();
+    }
+    if (kind === "copy-whatsapp") {
+      const text = state.handoff && state.handoff.text ? state.handoff.text : buildWhatsAppMessage();
+      navigator.clipboard.writeText(text).then(
+        () => addMessage("assistant", "Your structured WhatsApp handoff has been copied. Open the group or WhatsApp message and paste it so the team can act quickly."),
+        () => addMessage("assistant", "Copy did not work automatically. You can still open WhatsApp or email from the action buttons below.")
+      );
     }
   });
 

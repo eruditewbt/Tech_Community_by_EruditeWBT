@@ -1354,6 +1354,29 @@ a {
   gap: 10px;
 }
 
+.assistantQuickActions {
+  padding: 0 16px 14px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.assistantActionBtn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 40px;
+  border-radius: 999px;
+  border: 1px solid rgba(39, 208, 160, 0.24);
+  background: rgba(39, 208, 160, 0.1);
+  color: var(--ink);
+  padding: 10px 14px;
+  font-size: 13px;
+  font-weight: 800;
+  text-decoration: none;
+  cursor: pointer;
+}
+
 .assistantSuggestion {
   display: grid;
   gap: 6px;
